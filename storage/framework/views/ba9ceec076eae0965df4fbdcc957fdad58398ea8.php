@@ -1,10 +1,9 @@
-@extends('layouts.apps')
-@section('title','takealeave');
-@section('module-name','Leave Application')
-@section('stylesheet')
+<?php $__env->startSection('title','takealeave'); ?>;
+<?php $__env->startSection('module-name','Leave Application'); ?>
+<?php $__env->startSection('stylesheet'); ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
         <div class="col-12">
           <div class="box">
@@ -31,9 +30,9 @@
                       <label>Leave Type</label>
                       <select class="form-control leavedays" name="">
                         <option>--</option>
-                        @foreach($leavetypes as $leavetype)
-                        <option value="{{$leavetype->max_allowed_days}}">{{$leavetype->leave_name}}</option>
-                        @endforeach
+                        <?php $__currentLoopData = $leavetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $leavetype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($leavetype->max_allowed_days); ?>"><?php echo e($leavetype->leave_name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </select>
                     </div>
                   </div>
@@ -55,8 +54,8 @@
           </div>
         </div>
 </div>
-@endsection
-@section('javascript')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript'); ?>
 <script>
 $(document).ready(function(){
   $('.leavedays').on('change',function(){
@@ -91,4 +90,6 @@ $(document).ready(function(){
 </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
