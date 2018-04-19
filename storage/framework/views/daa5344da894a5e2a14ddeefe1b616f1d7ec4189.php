@@ -29,23 +29,6 @@
           </a>
         </li>
         <?php endif; // app('laratrust')->hasRole ?>
-        <?php if (app('laratrust')->hasRole('employee')) : ?>
-        <li>
-          <a href="<?php echo e(route('takealeave')); ?>">
-            <i class="fa fa-edit"></i> <span>Take a Leave</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo e(route('leavehistory')); ?>">
-            <i class="fa fa-archive"></i> <span>Your Leave History</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo e(route('holidaycalender')); ?>">
-            <i class="fa fa-calendar"></i> <span>Holiday Calender</span>
-          </a>
-        </li>
-        <?php endif; // app('laratrust')->hasRole ?>
          <?php if (app('laratrust')->hasRole('dcp')) : ?>
         
         <li class="treeview">
@@ -63,6 +46,22 @@
           </ul>
         </li>
         <?php endif; // app('laratrust')->hasRole ?>
+
+        <li>
+          <a href="<?php echo e(route('takealeave')); ?>">
+            <i class="fa fa-edit"></i> <span>Take a Leave</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo e(route('leavehistory')); ?>">
+            <i class="fa fa-archive"></i> <span>Your Leave History</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo e(route('holidaycalender')); ?>">
+            <i class="fa fa-calendar"></i> <span>Holiday Calender</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-circle"></i> <span>Attendance</span>
@@ -71,8 +70,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-arrow-up"></i>Check In</a></li>
-            <li><a href="#"><i class="fa fa-arrow-down"></i>Check Out</a></li>
+            <li><a href="<?php echo e(route('checkin')); ?>"><i class="fa fa-arrow-up"></i>Check In</a></li>
+            <li><a href="<?php echo e(route('checkout')); ?>"><i class="fa fa-arrow-down"></i>Check Out</a></li>
           </ul>
         </li>
         <li class="treeview">

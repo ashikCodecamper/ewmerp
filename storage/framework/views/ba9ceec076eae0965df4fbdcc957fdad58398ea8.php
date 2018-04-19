@@ -49,6 +49,14 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-5"></div>
+                  <div class="col-3">
+                    <div class="form-group">
+                      <button type="button" name="button" class="btn btn-lg btn-primary">APPLY</button>
+                    </div>
+                  </div>
+                </div>
               </form>
             </div>
           </div>

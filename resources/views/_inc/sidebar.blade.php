@@ -28,23 +28,6 @@
           </a>
         </li>
         @endrole
-        @role('employee')
-        <li>
-          <a href="{{route('takealeave')}}">
-            <i class="fa fa-edit"></i> <span>Take a Leave</span>
-          </a>
-        </li>
-        <li>
-          <a href="{{route('leavehistory')}}">
-            <i class="fa fa-archive"></i> <span>Your Leave History</span>
-          </a>
-        </li>
-        <li>
-          <a href="{{route('holidaycalender')}}">
-            <i class="fa fa-calendar"></i> <span>Holiday Calender</span>
-          </a>
-        </li>
-        @endrole
          @role('dcp')
         {{--  <li>
           <a href="{{route('dcpdashboard')}}">
@@ -66,6 +49,22 @@
           </ul>
         </li>
         @endrole
+
+        <li>
+          <a href="{{route('takealeave')}}">
+            <i class="fa fa-edit"></i> <span>Take a Leave</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('leavehistory')}}">
+            <i class="fa fa-archive"></i> <span>Your Leave History</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('holidaycalender')}}">
+            <i class="fa fa-calendar"></i> <span>Holiday Calender</span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-circle"></i> <span>Attendance</span>
@@ -74,8 +73,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-arrow-up"></i>Check In</a></li>
-            <li><a href="#"><i class="fa fa-arrow-down"></i>Check Out</a></li>
+            <li><a href="{{route('checkin')}}"><i class="fa fa-arrow-up"></i>Check In</a></li>
+            <li><a href="{{route('checkout')}}"><i class="fa fa-arrow-down"></i>Check Out</a></li>
           </ul>
         </li>
         <li class="treeview">

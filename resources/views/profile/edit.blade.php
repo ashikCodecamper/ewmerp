@@ -44,7 +44,7 @@
               <select name="emptype" id="" class="form-control">
                  @if(!empty($empts))
                   @foreach($empts as $empt)
-                  <option value="{{$empt->emp_name}}">{{$empt->emp_name}}</option>
+                  <option value="{{$empt->emp_name}}" {{ $empt->emp_name == $user->profile->emptype ? 'selected' : '' }}>{{$empt->emp_name}}</option>
                   @endforeach
                @endif
               </select>
@@ -55,18 +55,18 @@
               <input type="text" name="join_date" value="{{ $user->profile->join_date }}" class="form-control datepicker" >
           </div>
 
-          
+
       </div>
       <div class="row">
         <div class="col-md-3">
           <input type="file" name="avatar" id="profile-img">
         <img src="/uploads/{{$user->profile->avatar}}" id="profile-img-tag" width="200px" /></div>
-        
+
         <div class="col-md-6">
-          
+
         </div>
       </div>
-        
+
       <div class="row">
           <div class="col-md-6">
               <label for="">NID</label>
@@ -77,7 +77,7 @@
               <select name="section" id="" class="form-control">
                   @if(!empty($secs))
                       @foreach($secs as $sec)
-                      <option value="{{$sec->sec_name}}">{{$sec->sec_name}}</option>
+                      <option value="{{$sec->sec_name}}" {{ $sec->sec_name == $user->profile->section ? 'selected' : '' }}>{{$sec->sec_name}}</option>
                       @endforeach
                   @endif
               </select>
@@ -89,7 +89,7 @@
               <select name="department" id="" class="form-control">
               @if(!empty($deps))
                   @foreach($deps as $dep)
-                  <option value="{{$dep->dep_name}}">{{$dep->dep_name}}</option>
+                  <option value="{{$dep->dep_name}}" {{ $dep->dep_name == $user->profile->department ? 'selected' : '' }}>{{$dep->dep_name}}</option>
                   @endforeach
                @endif
                </select>
@@ -99,7 +99,7 @@
               <select name="designation" id="" class="form-control">
               @if(!empty($degis))
                   @foreach($degis as $deg)
-                  <option value="{{$deg->deg_name}}">{{$deg->deg_name}}</option>
+                  <option value="{{$deg->deg_name}}" {{ $deg->deg_name == $user->profile->designation ? 'selected' : '' }}>{{$deg->deg_name}}</option>
                   @endforeach
               @endif
               </select>
@@ -133,15 +133,15 @@
                 <div class="form-group">
                   <label for="">Blood Group</label>
                 <select name="blood_group" class="form-control">
-                  <option value="a+">A+</option>
-                  <option value="b+">B+</option>
-                  <option value="a-">A-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="o+">O+</option>
-                  <option value="o-">O-</option>
+                  <option value="a+" {{ 'a+' == $user->profile->blood_group ? 'selected' : '' }}>A+</option>
+                  <option value="b+" {{ 'b+' == $user->profile->blood_group ? 'selected' : '' }}>B+</option>
+                  <option value="a-" {{ 'a-' == $user->profile->blood_group ? 'selected' : '' }}>A-</option>
+                  <option value="AB+" {{ 'AB+' == $user->profile->blood_group ? 'selected' : '' }}>AB+</option>
+                  <option value="o+" {{ 'o+' == $user->profile->blood_group ? 'selected' : '' }}>O+</option>
+                  <option value="o-" {{ 'o-' == $user->profile->blood_group ? 'selected' : '' }}>O-</option>
                 </select>
                 </div>
-                
+
             </div>
           </div>
           <div class="row">
@@ -186,7 +186,7 @@
         function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            
+
             reader.onload = function (e) {
                 $('#profile-img-tag').attr('src', e.target.result);
             }
@@ -198,4 +198,3 @@
     });
     </script>
 @endsection
-

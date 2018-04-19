@@ -54,7 +54,8 @@ Route::post('login', function()
 
 
 Route::get('/home', 'EmployeeController@index')->name('home')->middleware('auth');
-
+Route::get('/checkin', 'CheckInOutController@checkin')->name('checkin')->middleware('auth');
+Route::get('/checkout', 'CheckInOutController@checkout')->name('checkout')->middleware('auth');
 //for human resource routing
 Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
 {
@@ -85,7 +86,7 @@ Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
      'holidaylist'=> 'HrHolidayListController',
     // 'leaveallocation'=> 'HrLeaveAllocationController',
     // 'attendance'=> 'HrAttendanceController',
-    
+
    ]);
 
 
@@ -211,7 +212,7 @@ Route::group(['prefix'=>'vacancy','middleware'=>'guest'],function() {
     Route::get('show/{id}','VacancyController@show')->name('vacancyshow');
     Route::post('saveapply','VacancyController@saveapply')->name('saveapply');
 });
-   
+
 
 //Account module route
 Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
@@ -306,7 +307,7 @@ Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
     Route::get('/head-reports2', 'Account\ReportController@show_head_report2')->name('head.report2');;
     Route::post('/head-reports/show2', 'Account\ReportController@show_head_report_show2')->name('head.report.show2');
 
-   
+
 
     Route::get('/pettycash-reports/', 'Account\ReportController@show_balance_report')->name('balance_report_show');
     Route::post('/pettycash-reports/', 'Account\ReportController@show_balance_report_show')->name('balance_report');
