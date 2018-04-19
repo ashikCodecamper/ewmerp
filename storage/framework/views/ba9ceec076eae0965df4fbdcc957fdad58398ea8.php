@@ -1,4 +1,3 @@
-<?php $__env->startSection('title','takealeave'); ?>;
 <?php $__env->startSection('module-name','Leave Application'); ?>
 <?php $__env->startSection('stylesheet'); ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -39,13 +38,13 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>From date</label>
-                      <input type="date" required id="firstDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="firstDate" name="" value="" class="form-control datepicker">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label>To date</label>
-                      <input type="date" required id="secondDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="secondDate" name="" value="" class="form-control datepicker">
                     </div>
                   </div>
                 </div>

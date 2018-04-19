@@ -1,5 +1,4 @@
 @extends('layouts.apps')
-@section('title','takealeave');
 @section('module-name','Leave Application')
 @section('stylesheet')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -40,13 +39,13 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>From date</label>
-                      <input type="date" required id="firstDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="firstDate" name="" value="" class="form-control datepicker">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label>To date</label>
-                      <input type="date" required id="secondDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="secondDate" name="" value="" class="form-control datepicker">
                     </div>
                   </div>
                 </div>
