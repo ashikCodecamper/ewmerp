@@ -1,12 +1,12 @@
-@extends('layouts.apps')
-@section('stylesheet')
-    <link rel="stylesheet" href="{{asset("assets/fullcalendar/fullcalendar.css")}}"/>
-    <link rel="stylesheet"
-          href="{{asset("assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")}}"/>
-@endsection
 
-@section('module-name','Holiday settings')
-@section('content')
+<?php $__env->startSection('stylesheet'); ?>
+    <link rel="stylesheet" href="<?php echo e(asset("assets/fullcalendar/fullcalendar.css")); ?>"/>
+    <link rel="stylesheet"
+          href="<?php echo e(asset("assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")); ?>"/>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('module-name','Holiday settings'); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
 
         <!-- /.col -->
@@ -88,10 +88,10 @@
 
     </div>
 
-    <script src="{{asset("assets/fullcalendar/lib/jquery.min.js")}}"></script>
-    <script src="{{asset("assets/fullcalendar/lib/moment.min.js")}}"></script>
-    <script src="{{asset("assets/fullcalendar/fullcalendar.js")}}"></script>
-    <script src="{{asset("assets/fullcalendar/gcal.js")}}"></script>
+    <script src="<?php echo e(asset("assets/fullcalendar/lib/jquery.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("assets/fullcalendar/lib/moment.min.js")); ?>"></script>
+    <script src="<?php echo e(asset("assets/fullcalendar/fullcalendar.js")); ?>"></script>
+    <script src="<?php echo e(asset("assets/fullcalendar/gcal.js")); ?>"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
@@ -99,11 +99,11 @@
 
             function save(d) {
                 $.ajax({
-                    url: "{{route('holiday.add')}}",
+                    url: "<?php echo e(route('holiday.add')); ?>",
                     dataType: 'json',
                     type: 'POST',
                     data: {
-                        "_token": "{{ csrf_token() }}",
+                        "_token": "<?php echo e(csrf_token()); ?>",
                         data: JSON.stringify(d),
                     },
                 });
@@ -186,7 +186,7 @@
                     {
                         events: function (start, end, timezone, callback) {
                             $.ajax({
-                                url: "{{route('holiday.all')}}",
+                                url: "<?php echo e(route('holiday.all')); ?>",
                                 dataType: 'json',
                                 data: {
                                     start: start.unix(),
@@ -223,11 +223,11 @@
                         };
 
                         $.ajax({
-                            url: "{{route('holiday.delete')}}",
+                            url: "<?php echo e(route('holiday.delete')); ?>",
                             dataType: 'json',
                             type: "POST",
                             data: {
-                                "_token": "{{ csrf_token() }}",
+                                "_token": "<?php echo e(csrf_token()); ?>",
                                 event: JSON.stringify(eventData)
                             },
                             success: function (msg) {
@@ -252,11 +252,11 @@
                         }
 
                         $.ajax({
-                            url: "{{route('holiday.edit')}}",
+                            url: "<?php echo e(route('holiday.edit')); ?>",
                             dataType: 'json',
                             type: "POST",
                             data: {
-                                "_token": "{{ csrf_token() }}",
+                                "_token": "<?php echo e(csrf_token()); ?>",
                                 event: JSON.stringify(eventData)
                             },
                             success: function (msg) {
@@ -276,4 +276,6 @@
             });
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
