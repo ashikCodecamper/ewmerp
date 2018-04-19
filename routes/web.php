@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -313,3 +314,5 @@ Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
     Route::post('/pettycash-reports/', 'Account\ReportController@show_balance_report_show')->name('balance_report');
 
 });
+
+Route::any ( '/search', 'ProfileController@searchprofile')->name('search.profile');

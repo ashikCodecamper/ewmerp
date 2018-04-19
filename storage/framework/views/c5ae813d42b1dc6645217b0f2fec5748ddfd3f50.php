@@ -1,28 +1,29 @@
-@extends('layouts.apps')
-@section('module-name','Create Employee')
-@section('content')
+
+<?php $__env->startSection('module-name','Create Employee'); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
 <div class="modal-body">
-@if ($errors->any())
+<?php if($errors->any()): ?>
 <div class="alert alert-danger">
   <ul>
-      @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-      @endforeach
+      <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <li><?php echo e($error); ?></li>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </ul>
 </div>
-@endif
-  <form action="{{route('profile.store')}}" method="POST" enctype="multipart/form-data" data-parsley-validate>
-  {{csrf_field()}}
+<?php endif; ?>
+  <form action="<?php echo e(route('profile.store')); ?>" method="POST" enctype="multipart/form-data" data-parsley-validate>
+  <?php echo e(csrf_field()); ?>
+
     <div class="form-group ">
       <div class="row">
           <div class="col-md-4">
           <label for="" class="col-form-label">Full Name</label>
-          <input type="text" name="f_name" value="{{ old('f_name') }}" required class="form-control" >
+          <input type="text" name="f_name" value="<?php echo e(old('f_name')); ?>" required class="form-control" >
           </div>
           <div class="col-md-4">
               <label for="" class="col-form-label">Email Address</label>
-              <input type="email" name="email" required value="{{ old('email') }}" class="form-control" >
+              <input type="email" name="email" required value="<?php echo e(old('email')); ?>" class="form-control" >
           </div>
           <div class="col-md-4">
               <label for="" class="col-form-label">Password</label>
@@ -32,23 +33,23 @@
       <div class="row">
           <div class="col-md-4">
           <label for="" class="col-form-label">Date Of Birth</label>
-          <input type="text" name="dob" required value="{{ old('dob') }}" class="form-control datepicker" >
+          <input type="text" name="dob" required value="<?php echo e(old('dob')); ?>" class="form-control datepicker" >
           </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label class="col-form-label">Select Employement Type</label>
               <select name="emptype" id="" required class="form-control select2">
-                 @if(!empty($empts))
-                  @foreach($empts as $empt)
-                  <option value="{{$empt->emp_name}}">{{$empt->emp_name}}</option>
-                  @endforeach
-               @endif
+                 <?php if(!empty($empts)): ?>
+                  <?php $__currentLoopData = $empts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <option value="<?php echo e($empt->emp_name); ?>"><?php echo e($empt->emp_name); ?></option>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+               <?php endif; ?>
               </select>
               </div>
             </div>
             <div class="col-md-4">
               <label for="" class="col-form-label">Joining Date</label>
-              <input type="text" name="join_date" required value="{{ old('join_date') }}" class="form-control datepicker" >
+              <input type="text" name="join_date" required value="<?php echo e(old('join_date')); ?>" class="form-control datepicker" >
           </div>
 
 
@@ -58,16 +59,16 @@
       <div class="row">
           <div class="col-md-6">
               <label for="">NID</label>
-              <input type="text" name="nid" required value="{{ old('nid') }}" class="form-control">
+              <input type="text" name="nid" required value="<?php echo e(old('nid')); ?>" class="form-control">
           </div>
           <div class="col-md-6">
               <label for=""> Section </label>
               <select name="section" id="" required class="form-control select2">
-                  @if(!empty($secs))
-                      @foreach($secs as $sec)
-                      <option value="{{$sec->sec_name}}">{{$sec->sec_name}}</option>
-                      @endforeach
-                  @endif
+                  <?php if(!empty($secs)): ?>
+                      <?php $__currentLoopData = $secs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sec): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <option value="<?php echo e($sec->sec_name); ?>"><?php echo e($sec->sec_name); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <?php endif; ?>
               </select>
           </div>
       </div>
@@ -75,38 +76,38 @@
           <div class="col-md-6">
               <label for="">Department</label>
               <select name="department" id="" required class="form-control select2">
-              @if(!empty($deps))
-                  @foreach($deps as $dep)
-                  <option value="{{$dep->dep_name}}">{{$dep->dep_name}}</option>
-                  @endforeach
-               @endif
+              <?php if(!empty($deps)): ?>
+                  <?php $__currentLoopData = $deps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dep): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <option value="<?php echo e($dep->dep_name); ?>"><?php echo e($dep->dep_name); ?></option>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+               <?php endif; ?>
                </select>
           </div>
           <div class="col-md-6">
               <label for="">Designation</label>
               <select name="designation" id="" required class="form-control select2">
-              @if(!empty($degis))
-                  @foreach($degis as $deg)
-                  <option value="{{$deg->deg_name}}">{{$deg->deg_name}}</option>
-                  @endforeach
-              @endif
+              <?php if(!empty($degis)): ?>
+                  <?php $__currentLoopData = $degis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $deg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <option value="<?php echo e($deg->deg_name); ?>"><?php echo e($deg->deg_name); ?></option>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              <?php endif; ?>
               </select>
           </div>
       </div>
           <div class="row">
               <div class="col-md-6">
                   <label for="">Mobile Number</label>
-                  <input type="text" name="mobile_number" required value="{{ old('mobile_number') }}" class="form-control">
+                  <input type="text" name="mobile_number" required value="<?php echo e(old('mobile_number')); ?>" class="form-control">
               </div>
               <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-8">
                       <label for="">Passport Number</label>
-                      <input type="text" name="passport_number"  value="{{ old('passport_number') }}" class="form-control">
+                      <input type="text" name="passport_number"  value="<?php echo e(old('passport_number')); ?>" class="form-control">
                     </div>
                     <div class="col-md-4">
                       <label for="">Expire Date</label>
-                      <input type="text" name="exp_date" value="{{ old('exp_date') }}" class="form-control datepicker">
+                      <input type="text" name="exp_date" value="<?php echo e(old('exp_date')); ?>" class="form-control datepicker">
                     </div>
                   </div>
               </div>
@@ -114,7 +115,7 @@
           <div class="row">
             <div class="col-md-4">
                 <label for="">Emergency Contact Number</label>
-                <input type="text" name="emg_contact_number" required value="{{ old('emg_contact_number') }}" class="form-control">
+                <input type="text" name="emg_contact_number" required value="<?php echo e(old('emg_contact_number')); ?>" class="form-control">
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-4">
@@ -159,8 +160,8 @@
   </form>
 </div>
 </div>
-@endsection
-@section('javascript')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript'); ?>
     <script>
         $('.datepicker').datepicker({
             format: 'yyyy/mm/dd',
@@ -184,4 +185,6 @@
     });
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -22,8 +22,9 @@
   <link rel="stylesheet" href="<?php echo e(asset("css/parsley.css")); ?>">
   <link rel="stylesheet" href="<?php echo e(asset("css/toastr.css")); ?>">
   <link rel="stylesheet" href="<?php echo e(asset("assets/vendor_components/sweetalert/sweetalert.css")); ?>">
-
-
+ <link href="<?php echo e(asset("assets/vendor_components/select2/dist/css/select2.min.css")); ?>" rel="stylesheet" />
+ <link href="<?php echo e(asset("css/select2-bootstrap4.css")); ?>" rel="stylesheet" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -36,7 +37,10 @@
 	<!-- jQuery 3 -->
 <script src="<?php echo e(asset("assets/vendor_components/jquery/dist/jquery.js")); ?>"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<?php echo e(asset("assets/vendor_components/select2/dist/js/select2.full.js")); ?>"></script>
 	<!-- jQuery UI 1.11.4 -->
 	<script src="<?php echo e(asset("assets/vendor_components/jquery-ui/jquery-ui.js")); ?>"></script>
+
     <?php echo $__env->yieldContent('stylesheet'); ?>
     </head>

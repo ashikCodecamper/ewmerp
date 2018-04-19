@@ -14,6 +14,7 @@ use App\EmploymentType;
 use Illuminate\Http\Request;
 use Session;
 use Validator;
+use Illuminate\Support\Facades\Input;
 
 class ProfileController extends Controller
 {
@@ -184,5 +185,18 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchprofile() {
+    	$q = Input::get ( 'q' );
+    	if($q != ""){
+    	$user = User::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->paginate (5)->setPath ( '' );
+    	$pagination = $user->appends ( array (
+    				'q' => Input::get ( 'q' )
+    		) );
+    	if (count ( $user ) > 0)
+    		return view ( 'profile.index',['details'=>$user,'query'=>$q] );
+    	}
+    		return view ( 'profile.index',['message'=>'No Details found. Try to search again !']);
     }
 }

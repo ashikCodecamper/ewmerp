@@ -37,6 +37,9 @@
 
     <?php echo $__env->yieldContent('javascript'); ?>
 	<script>
+	$('.select2').select2({
+		theme: "bootstrap4"
+	});
 		<?php if(Session::has('success')): ?>
 			toastr.success("<?php echo e(Session::get('success')); ?>")
 		<?php endif; ?>

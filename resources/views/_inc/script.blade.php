@@ -37,6 +37,9 @@
 
     @yield('javascript')
 	<script>
+	$('.select2').select2({
+		theme: "bootstrap4"
+	});
 		@if(Session::has('success'))
 			toastr.success("{{Session::get('success')}}")
 		@endif

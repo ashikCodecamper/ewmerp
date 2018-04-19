@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="box-body">
-              <form class="" action="index.html" method="post">
+              <form class="" action="index.html" method="post" data-parsley-validate>
                 <div class="row">
                   <div class="col-3">
                     <div class="form-group">
@@ -28,8 +28,8 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Leave Type</label>
-                      <select class="form-control leavedays" name="">
-                        <option>--</option>
+                      <select class="form-control leavedays select2" name="" required>
+                        <option value="">--</option>
                         <?php $__currentLoopData = $leavetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $leavetype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($leavetype->max_allowed_days); ?>"><?php echo e($leavetype->leave_name); ?></option>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -39,13 +39,22 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>From date</label>
-                      <input type="date" id="firstDate" name="" value="" class="form-control datepicker">
+                      <input type="date" required id="firstDate" name="" value="" class="form-control datepicker">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label>To date</label>
-                      <input type="date" id="secondDate" name="" value="" class="form-control datepicker">
+                      <input type="date" required id="secondDate" name="" value="" class="form-control datepicker">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-9">
+                    <div class="form-group">
+                      <label> Leave Description</label>
+                      <textarea name="leave_desc" rows="8" cols="80" class="form-control" required></textarea>
                     </div>
                   </div>
                 </div>
@@ -53,7 +62,7 @@
                   <div class="col-5"></div>
                   <div class="col-3">
                     <div class="form-group">
-                      <button type="button" name="button" class="btn btn-lg btn-primary">APPLY</button>
+                      <button type="submit" name="button" class="btn btn-lg btn-primary">APPLY</button>
                     </div>
                   </div>
                 </div>
@@ -72,6 +81,7 @@ $(document).ready(function(){
   });
 
   $("#secondDate").datepicker({
+    dateFormat:'yy-mm-dd',
       onSelect: function () {
         var start= $("#firstDate").datepicker("getDate");
         var end= $("#secondDate").datepicker("getDate");
