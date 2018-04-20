@@ -71,7 +71,7 @@
                     <?php if(auth()->guard()->check()): ?>
                         <a href="<?php echo e(url('/home')); ?>">Home</a>
                     <?php else: ?>
-                        <a href="<?php echo e(route('login')); ?>">Login</a>
+                        <a href="<?php echo e(route('vacancylist')); ?>">Vacancy List</a>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="links">
-                   <a href="<?php echo e(route('vacancylist')); ?>"><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Vacancy</button></a> 
+                   <a href="<?php echo e(route('login')); ?>"><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Login</button></a>
                 </div>
             </div>
         </div>

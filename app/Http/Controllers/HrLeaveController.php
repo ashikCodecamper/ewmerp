@@ -11,6 +11,9 @@ class HrLeaveController extends Controller
     public function takealeave() {
         return view('hr.leave.takealeave',['leavetypes'=>HrLeaveType::all()]);
     }
+    public function savetakealeave(Request $request) {
+        return $request->all();
+    }
 
     public function leavehistory() {
         return view('hr.leave.leavehistory');

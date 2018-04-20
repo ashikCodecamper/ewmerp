@@ -1,14 +1,14 @@
 
-<?php $__env->startSection('module-name','Section settings'); ?>
+<?php $__env->startSection('module-name','emptype settings'); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
         <div class="col-6">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Create leavetype</h3>
+              <h3 class="box-title">Create Employment Type</h3>
 
               <div class="box-tools" style="float:right;">
-                  <a href="<?php echo e(route('leavetype.index')); ?>"><button type="buton" class="btn bg-purple btn-lg" ><strong>leavetype List<strong></button></a>
+                  <a href="<?php echo e(route('emptype.index')); ?>"><button type="buton" class="btn bg-purple btn-lg" ><strong>Employement Type List<strong></button></a>
               </div>
             </div>
             <!-- /.box-header -->
@@ -16,16 +16,13 @@
                 <div class="row">
                   <div class="col-md-2"></div>
                   <div class="col-md-8">
-                    <form class="" action="<?php echo e(route('leavetype.store')); ?>" method="post">
+                    <form class="" action="<?php echo e(route('emptype.update',$emptype->id)); ?>" method="post">
                       <?php echo e(csrf_field()); ?>
 
+                      <input type="hidden" name="_method" value="PUT">
                       <div class="form-group">
-                        <label for="">leavetype Name</label>
-                        <input type="text" name="leave_name" value="<?php echo e(old('leave_name')); ?>" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="">Max Allowed Day</label>
-                        <input type="text" name="max_allowed_days" value="<?php echo e(old('max_allowed_days')); ?>" class="form-control">
+                        <label for="">Employment Type Name</label>
+                        <input type="text" name="emp_name" value="<?php echo e($emptype->emp_name); ?>" class="form-control">
                       </div>
                       <button type="submit" class="btn btn-large bg-green">Save</button>
                     </form>

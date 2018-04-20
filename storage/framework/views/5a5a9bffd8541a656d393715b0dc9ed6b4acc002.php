@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="">Leave Application</a></li>
                 <li><a href="<?php echo e(route('leavetype.index')); ?>">Leave Type</a></li>
-                <li><a href="<?php echo e(route('holidaylist.index')); ?>">Holiday List</a></li>
+                <li><a href="<?php echo e(route('holidays')); ?>">Holiday List</a></li>
                 <li><a href="#">Leave Allocation</a></li>
             </ul>
         </div>
@@ -47,6 +47,14 @@
                 <li><a href="<?php echo e(route('section.index')); ?>">Section</a></li>
                 <li><a href="<?php echo e(route('department.index')); ?>">Department</a></li>
                 <li><a href="<?php echo e(route('designation.index')); ?>">Designation</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h4>Attendance Settings</h4>
+            <ul>
+                <li><a href="<?php echo e(route('officetime')); ?>">Checkin Time Setup</a></li>
+                <li><a href="<?php echo e(route('graceperiod')); ?>">Grace Period Setup</a></li>
+                <li><a href="<?php echo e(route('officeouttime')); ?>">Check Out Time Setup</a></li>
             </ul>
         </div>
     </div>

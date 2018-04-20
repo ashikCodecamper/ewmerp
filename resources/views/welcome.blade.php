@@ -71,7 +71,7 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('vacancylist') }}">VacancyList</a>
                     @endauth
                 </div>
             @endif
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="links">
-                   <a href="{{route('vacancylist')}}"><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Vacancy</button></a> 
+                   <a href="{{route('login')}}"><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Login</button></a>
                 </div>
             </div>
         </div>

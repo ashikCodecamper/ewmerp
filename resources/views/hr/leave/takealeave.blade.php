@@ -2,6 +2,9 @@
 @section('module-name','Leave Application')
 @section('stylesheet')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.1/css/themes/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.1/css/alertify.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.11.1/alertify.min.js"></script>
 @endsection
 @section('content')
 <div class="row">
@@ -15,7 +18,8 @@
               </div>
             </div>
             <div class="box-body">
-              <form class="" action="index.html" method="post" data-parsley-validate>
+              <form class="" action="{{route('savetakealeave')}}" method="post" data-parsley-validate>
+                {{csrf_field()}}
                 <div class="row">
                   <div class="col-3">
                     <div class="form-group">
@@ -28,10 +32,10 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Leave Type</label>
-                      <select class="form-control leavedays select2" name="" required>
+                      <select class="form-control leavedays select2" name="leave_type_id" required>
                         <option value="">--</option>
                         @foreach($leavetypes as $leavetype)
-                        <option value="{{$leavetype->max_allowed_days}}">{{$leavetype->leave_name}}</option>
+                        <option title="{{$leavetype->max_allowed_days}}" value="{{$leavetype->id}}">{{$leavetype->leave_name}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -74,9 +78,10 @@
 @endsection
 @section('javascript')
 <script>
+alertify.defaults.glossary.title = '<i class="fa fa-warning fa-2x text-danger"><i>Warning!';
 $(document).ready(function(){
   $('.leavedays').on('change',function(){
-    selectdays = $('.leavedays').val();
+     selectdays = $('option:selected',$(this)).attr('title');
     console.log(selectdays);
   });
 
@@ -87,7 +92,7 @@ $(document).ready(function(){
         var end= $("#secondDate").datepicker("getDate");
         var days = (end- start) / (1000 * 60 * 60 * 24);
         if(Math.round(days)>selectdays) {
-          alert("You have only "+selectdays.toString()+" days allowed for leave");
+          alertify.alert("You have only "+selectdays.toString()+" days allowed for This type of leave");
           $("#secondDate").val('');
         }
       },

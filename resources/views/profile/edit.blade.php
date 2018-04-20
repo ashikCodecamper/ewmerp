@@ -41,7 +41,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label class="col-form-label">Select Employement Type</label>
-              <select name="emptype" id="" class="form-control">
+              <select name="emptype" id="" class="form-control select2">
                  @if(!empty($empts))
                   @foreach($empts as $empt)
                   <option value="{{$empt->emp_name}}" {{ $empt->emp_name == $user->profile->emptype ? 'selected' : '' }}>{{$empt->emp_name}}</option>
@@ -74,7 +74,7 @@
           </div>
           <div class="col-md-6">
               <label for=""> Section </label>
-              <select name="section" id="" class="form-control">
+              <select name="section" id="" class="form-control select2">
                   @if(!empty($secs))
                       @foreach($secs as $sec)
                       <option value="{{$sec->sec_name}}" {{ $sec->sec_name == $user->profile->section ? 'selected' : '' }}>{{$sec->sec_name}}</option>
@@ -86,7 +86,7 @@
       <div class="row">
           <div class="col-md-6">
               <label for="">Department</label>
-              <select name="department" id="" class="form-control">
+              <select name="department" id="" class="form-control select2">
               @if(!empty($deps))
                   @foreach($deps as $dep)
                   <option value="{{$dep->dep_name}}" {{ $dep->dep_name == $user->profile->department ? 'selected' : '' }}>{{$dep->dep_name}}</option>
@@ -96,7 +96,7 @@
           </div>
           <div class="col-md-6">
               <label for="">Designation</label>
-              <select name="designation" id="" class="form-control">
+              <select name="designation" id="" class="form-control select2">
               @if(!empty($degis))
                   @foreach($degis as $deg)
                   <option value="{{$deg->deg_name}}" {{ $deg->deg_name == $user->profile->designation ? 'selected' : '' }}>{{$deg->deg_name}}</option>
@@ -132,7 +132,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Blood Group</label>
-                <select name="blood_group" class="form-control">
+                <select name="blood_group" class="form-control select2">
                   <option value="a+" {{ 'a+' == $user->profile->blood_group ? 'selected' : '' }}>A+</option>
                   <option value="b+" {{ 'b+' == $user->profile->blood_group ? 'selected' : '' }}>B+</option>
                   <option value="a-" {{ 'a-' == $user->profile->blood_group ? 'selected' : '' }}>A-</option>

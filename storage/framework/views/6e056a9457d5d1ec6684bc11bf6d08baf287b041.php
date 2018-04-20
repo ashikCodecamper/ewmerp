@@ -42,7 +42,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label class="col-form-label">Select Employement Type</label>
-              <select name="emptype" id="" class="form-control">
+              <select name="emptype" id="" class="form-control select2">
                  <?php if(!empty($empts)): ?>
                   <?php $__currentLoopData = $empts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <option value="<?php echo e($empt->emp_name); ?>" <?php echo e($empt->emp_name == $user->profile->emptype ? 'selected' : ''); ?>><?php echo e($empt->emp_name); ?></option>
@@ -75,7 +75,7 @@
           </div>
           <div class="col-md-6">
               <label for=""> Section </label>
-              <select name="section" id="" class="form-control">
+              <select name="section" id="" class="form-control select2">
                   <?php if(!empty($secs)): ?>
                       <?php $__currentLoopData = $secs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sec): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <option value="<?php echo e($sec->sec_name); ?>" <?php echo e($sec->sec_name == $user->profile->section ? 'selected' : ''); ?>><?php echo e($sec->sec_name); ?></option>
@@ -87,7 +87,7 @@
       <div class="row">
           <div class="col-md-6">
               <label for="">Department</label>
-              <select name="department" id="" class="form-control">
+              <select name="department" id="" class="form-control select2">
               <?php if(!empty($deps)): ?>
                   <?php $__currentLoopData = $deps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dep): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <option value="<?php echo e($dep->dep_name); ?>" <?php echo e($dep->dep_name == $user->profile->department ? 'selected' : ''); ?>><?php echo e($dep->dep_name); ?></option>
@@ -97,7 +97,7 @@
           </div>
           <div class="col-md-6">
               <label for="">Designation</label>
-              <select name="designation" id="" class="form-control">
+              <select name="designation" id="" class="form-control select2">
               <?php if(!empty($degis)): ?>
                   <?php $__currentLoopData = $degis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $deg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <option value="<?php echo e($deg->deg_name); ?>" <?php echo e($deg->deg_name == $user->profile->designation ? 'selected' : ''); ?>><?php echo e($deg->deg_name); ?></option>
@@ -133,7 +133,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Blood Group</label>
-                <select name="blood_group" class="form-control">
+                <select name="blood_group" class="form-control select2">
                   <option value="a+" <?php echo e('a+' == $user->profile->blood_group ? 'selected' : ''); ?>>A+</option>
                   <option value="b+" <?php echo e('b+' == $user->profile->blood_group ? 'selected' : ''); ?>>B+</option>
                   <option value="a-" <?php echo e('a-' == $user->profile->blood_group ? 'selected' : ''); ?>>A-</option>

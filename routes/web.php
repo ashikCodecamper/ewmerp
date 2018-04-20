@@ -62,11 +62,18 @@ Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
 {
   Route::get('dashboard','HrDashboardController@index')->name('hrdashboard');
   Route::get('takealeave','HrLeaveController@takealeave')->name('takealeave');
+  Route::post('savetakealeave','HrLeaveController@savetakealeave')->name('savetakealeave');
   Route::get('leavehistory','HrLeaveController@leavehistory')->name('leavehistory');
   Route::get('holidaycalender','HrLeaveController@holidaycalender')->name('holidaycalender');
+  Route::get('officetime','AttendanceSettingController@officetime')->name('officetime');
+  Route::post('saveofficetime','AttendanceSettingController@saveofficetime')->name('saveofficetime');
+  Route::get('officeouttime','AttendanceSettingController@officeouttime')->name('officeouttime');
+  Route::post('saveofficeouttime','AttendanceSettingController@saveofficeouttime')->name('saveofficeouttime');
+  Route::get('graceperiod','AttendanceSettingController@graceperiod')->name('graceperiod');
+  Route::post('savegraceperiod','AttendanceSettingController@savegraceperiod')->name('savegraceperiod');
 //shahin vai
 
-    Route::get('holidays', 'HrHolidayListController@just_show');
+    Route::get('holidays', 'HrHolidayListController@just_show')->name('holidays');
     Route::get('jsonholidays', 'HrHolidayListController@index')->name('holiday.all');
     Route::post('holiday/add', 'HrHolidayListController@saveholiday')->name('holiday.add');
     Route::post('holiday/edit', 'HrHolidayListController@editholiday')->name('holiday.edit');
@@ -84,7 +91,7 @@ Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
     // 'offerleter'=> 'HrJobOfferController',
     // 'leaveapplication'=> 'HrLeaveApplicationController',
      'leavetype'=> 'HrLeaveTypeController',
-     'holidaylist'=> 'HrHolidayListController',
+
     // 'leaveallocation'=> 'HrLeaveAllocationController',
     // 'attendance'=> 'HrAttendanceController',
 
@@ -99,7 +106,7 @@ Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
 DCP All Route's
 ================================================================================
 */
-Route::group(['prefix'=>'dcp','middleware'=>'auth'],function() {
+Route::group(['prefix'=>'dcp','middleware'=>['role:dcp']],function() {
     Route::resources([
       'season' => 'DcpSeasonController',
       'supplier' => 'DcpSupplierController',

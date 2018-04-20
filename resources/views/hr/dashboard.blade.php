@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="">Leave Application</a></li>
                 <li><a href="{{route('leavetype.index')}}">Leave Type</a></li>
-                <li><a href="{{route('holidaylist.index')}}">Holiday List</a></li>
+                <li><a href="{{route('holidays')}}">Holiday List</a></li>
                 <li><a href="#">Leave Allocation</a></li>
             </ul>
         </div>
@@ -47,6 +47,14 @@
                 <li><a href="{{route('section.index')}}">Section</a></li>
                 <li><a href="{{route('department.index')}}">Department</a></li>
                 <li><a href="{{route('designation.index')}}">Designation</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h4>Attendance Settings</h4>
+            <ul>
+                <li><a href="{{route('officetime')}}">Checkin Time Setup</a></li>
+                <li><a href="{{route('graceperiod')}}">Grace Period Setup</a></li>
+                <li><a href="{{route('officeouttime')}}">Check Out Time Setup</a></li>
             </ul>
         </div>
     </div>
