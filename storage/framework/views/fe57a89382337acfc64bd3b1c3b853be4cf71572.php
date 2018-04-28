@@ -1,7 +1,7 @@
 <?php $__env->startSection('module-name','Office Time Setup'); ?>
 <?php $__env->startSection('stylesheet'); ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -43,7 +43,11 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('javascript'); ?>
 <script type="text/javascript">
-      $('#timepicker1').timepicker();
+      $('#timepicker1').timepicker({
+        timeFormat: 'h:mm p',
+    dropdown: true,
+    scrollbar: true
+      });
 </script>
 <?php $__env->stopSection(); ?>
 

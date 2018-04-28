@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfficeOutTimesTable extends Migration
+class CreateTakeLeavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateOfficeOutTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('office_out_times', function (Blueprint $table) {
+        Schema::create('take_leaves', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('out_time');
+            $table->integer('user_id')->unsigned();
+            $table->integer('leave_type_id');
+            $table->date('from_date');
+            $table->date('to_date');
+            $table->string('leave_desc');
             $table->timestamps();
-            #timestamp
         });
     }
 
@@ -28,6 +31,6 @@ class CreateOfficeOutTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('office_out_times');
+        Schema::dropIfExists('take_leaves');
     }
 }

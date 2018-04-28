@@ -6,7 +6,7 @@
         <div class="col-6">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Set In Time</h3>
+              <h3 class="box-title">Grace Period</h3>
 
               <div class="box-tools" style="float:right;">
                   <a href="#"><button type="buton" class="btn bg-purple btn-lg" ><strong>Time List<strong></button></a>

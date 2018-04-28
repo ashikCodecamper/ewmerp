@@ -71,7 +71,7 @@
                     <?php if(auth()->guard()->check()): ?>
                         <a href="<?php echo e(url('/home')); ?>">Home</a>
                     <?php else: ?>
-                        <a href="<?php echo e(route('vacancylist')); ?>">Vacancy List</a>
+                        <a href="<?php echo e(route('vacancylist')); ?>">VacancyList</a>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>

@@ -57,6 +57,7 @@ Route::post('login', function()
 Route::get('/home', 'EmployeeController@index')->name('home')->middleware('auth');
 Route::get('/checkin', 'CheckInOutController@checkin')->name('checkin')->middleware('auth');
 Route::get('/checkout', 'CheckInOutController@checkout')->name('checkout')->middleware('auth');
+Route::post('/checkout', 'CheckInOutController@savecheckout')->name('savecheckout')->middleware('auth');
 //for human resource routing
 Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
 {
@@ -67,10 +68,16 @@ Route::group(['prefix' => 'hr',  'middleware' => ['auth']], function()
   Route::get('holidaycalender','HrLeaveController@holidaycalender')->name('holidaycalender');
   Route::get('officetime','AttendanceSettingController@officetime')->name('officetime');
   Route::post('saveofficetime','AttendanceSettingController@saveofficetime')->name('saveofficetime');
+  Route::get('showofficetime','AttendanceSettingController@showofficetime')->name('showofficetime');
   Route::get('officeouttime','AttendanceSettingController@officeouttime')->name('officeouttime');
   Route::post('saveofficeouttime','AttendanceSettingController@saveofficeouttime')->name('saveofficeouttime');
   Route::get('graceperiod','AttendanceSettingController@graceperiod')->name('graceperiod');
   Route::post('savegraceperiod','AttendanceSettingController@savegraceperiod')->name('savegraceperiod');
+  Route::get('viewleaveapp','Hr\LeaveapplicationController@index')->name('viewleaveapp');
+  Route::get('viewleaveapp/api','Hr\LeaveapplicationController@api')->name('leaveapi');
+  Route::post('viewleaveapp/api','Hr\LeaveapplicationController@postapi');
+  Route::get('attend','ShowHrAttend@index')->name('attend');
+  Route::post('savecheckin','CheckInOutController@savecheckin')->name('savecheckin');
 //shahin vai
 
     Route::get('holidays', 'HrHolidayListController@just_show')->name('holidays');

@@ -7,8 +7,7 @@
             <h4>Employee and Attendance</h4>
             <ul>
                 <li><a href="<?php echo e(route('profile.index')); ?>">Employee</a></li>
-                <li><a href="#">Employee Attendance Tool</a></li>
-                <li><a href="#">Attendance</a></li>
+                <li><a href="<?php echo e(route('attend')); ?>">Attendance</a></li>
                 <li><a href="#">Upload Attendance</a></li>
             </ul>
         </div>
@@ -25,20 +24,19 @@
         <div class="col-sm-6">
             <h4>Leaves and Holiday</h4>
             <ul>
-                <li><a href="">Leave Application</a></li>
+                <li><a href="<?php echo e(route('viewleaveapp')); ?>">Leave Application</a></li>
                 <li><a href="<?php echo e(route('leavetype.index')); ?>">Leave Type</a></li>
                 <li><a href="<?php echo e(route('holidays')); ?>">Holiday List</a></li>
                 <li><a href="#">Leave Allocation</a></li>
             </ul>
         </div>
         <div class="col-sm-6">
-            <h4>Reports</h4>
-            <ul>
-                <li><a href="#">Employee Leave Balance</a></li>
-                <li><a href="#">Employee Birthday</a></li>
-                <li><a href="#">Employees working on a holiday</a></li>
-                <li><a href="#">Monthly Attendance Sheet</a></li>
-            </ul>
+          <h4>Attendance Settings</h4>
+          <ul>
+              <li><a href="<?php echo e(route('officetime')); ?>">Checkin Time Setup</a></li>
+              <li><a href="<?php echo e(route('graceperiod')); ?>">Grace Period Setup</a></li>
+              <li><a href="<?php echo e(route('officeouttime')); ?>">Check Out Time Setup</a></li>
+          </ul>
         </div>
         <div class="col-sm-6">
             <h4>HR Settings</h4>
@@ -50,12 +48,11 @@
             </ul>
         </div>
         <div class="col-sm-6">
-            <h4>Attendance Settings</h4>
-            <ul>
-                <li><a href="<?php echo e(route('officetime')); ?>">Checkin Time Setup</a></li>
-                <li><a href="<?php echo e(route('graceperiod')); ?>">Grace Period Setup</a></li>
-                <li><a href="<?php echo e(route('officeouttime')); ?>">Check Out Time Setup</a></li>
-            </ul>
+          <h4>Reports</h4>
+          <ul>
+              <li><a href="#">Employees working on a holiday</a></li>
+              <li><a href="#">Monthly Attendance Sheet</a></li>
+          </ul>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

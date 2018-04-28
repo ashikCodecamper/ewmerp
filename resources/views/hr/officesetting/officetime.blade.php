@@ -1,8 +1,8 @@
 @extends('layouts.apps')
 @section('module-name','Office Time Setup')
 @section('stylesheet')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 @endsection
 @section('content')
 
@@ -43,6 +43,10 @@
 @endsection
 @section('javascript')
 <script type="text/javascript">
-      $('#timepicker1').timepicker();
+      $('#timepicker1').timepicker({
+        timeFormat: 'h:mm p',
+    dropdown: true,
+    scrollbar: true
+      });
 </script>
 @endsection

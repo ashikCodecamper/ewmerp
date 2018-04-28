@@ -5,6 +5,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 use App\Profile;
+use App\HrLeaveType;
 
 class User extends Authenticatable
 {
@@ -32,4 +33,5 @@ class User extends Authenticatable
    {
        return $this->hasOne('App\Profile');
    }
+
 }

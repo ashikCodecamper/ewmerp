@@ -7,8 +7,7 @@
             <h4>Employee and Attendance</h4>
             <ul>
                 <li><a href="{{route('profile.index')}}">Employee</a></li>
-                <li><a href="#">Employee Attendance Tool</a></li>
-                <li><a href="#">Attendance</a></li>
+                <li><a href="{{route('attend')}}">Attendance</a></li>
                 <li><a href="#">Upload Attendance</a></li>
             </ul>
         </div>
@@ -25,20 +24,19 @@
         <div class="col-sm-6">
             <h4>Leaves and Holiday</h4>
             <ul>
-                <li><a href="">Leave Application</a></li>
+                <li><a href="{{route('viewleaveapp')}}">Leave Application</a></li>
                 <li><a href="{{route('leavetype.index')}}">Leave Type</a></li>
                 <li><a href="{{route('holidays')}}">Holiday List</a></li>
                 <li><a href="#">Leave Allocation</a></li>
             </ul>
         </div>
         <div class="col-sm-6">
-            <h4>Reports</h4>
-            <ul>
-                <li><a href="#">Employee Leave Balance</a></li>
-                <li><a href="#">Employee Birthday</a></li>
-                <li><a href="#">Employees working on a holiday</a></li>
-                <li><a href="#">Monthly Attendance Sheet</a></li>
-            </ul>
+          <h4>Attendance Settings</h4>
+          <ul>
+              <li><a href="{{route('officetime')}}">Checkin Time Setup</a></li>
+              <li><a href="{{route('graceperiod')}}">Grace Period Setup</a></li>
+              <li><a href="{{route('officeouttime')}}">Check Out Time Setup</a></li>
+          </ul>
         </div>
         <div class="col-sm-6">
             <h4>HR Settings</h4>
@@ -50,12 +48,11 @@
             </ul>
         </div>
         <div class="col-sm-6">
-            <h4>Attendance Settings</h4>
-            <ul>
-                <li><a href="{{route('officetime')}}">Checkin Time Setup</a></li>
-                <li><a href="{{route('graceperiod')}}">Grace Period Setup</a></li>
-                <li><a href="{{route('officeouttime')}}">Check Out Time Setup</a></li>
-            </ul>
+          <h4>Reports</h4>
+          <ul>
+              <li><a href="#">Employees working on a holiday</a></li>
+              <li><a href="#">Monthly Attendance Sheet</a></li>
+          </ul>
         </div>
     </div>
 @endsection

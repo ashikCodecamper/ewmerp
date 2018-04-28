@@ -1,14 +1,14 @@
 @extends('layouts.apps')
 @section('module-name','Employee Dashboard')
 @section('content')
- 
+
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Job vacancy List</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                   <a href="#"><button class="btn btn-primary">Add new Employee</button></a>
+
                   </div>
                 </div>
               </div>
@@ -25,14 +25,14 @@
                 </tr>
       @foreach($jobapplicants as $jobapplicant)
          <tr>
-         
+
             <td>{{$jobapplicant->full_name}}</td>
             <td>{{$jobapplicant->email}}</td>
-            <td> 
+            <td>
             {{$jobapplicant->mobile}}
             </td>
             <td>
-               <a href="{{asset('storage/'.$jobapplicant->cv.'')}}" target="_blank">Download</a> 
+               <a href="{{asset('storage/'.$jobapplicant->cv.'')}}" target="_blank">Download</a>
             </td>
         </tr>
       @endforeach
@@ -40,13 +40,12 @@
               <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
-               
                   </div>
               </div>
-              
+
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-         
+
 @endsection

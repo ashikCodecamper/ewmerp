@@ -31,6 +31,7 @@
                 <div class="row">
                   <div class="col-4">
                     <div class="form-group">
+                      <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                       <label>Leave Type</label>
                       <select class="form-control leavedays select2" name="leave_type_id" required>
                         <option value="">--</option>
@@ -43,13 +44,13 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>From date</label>
-                      <input type="text" required id="firstDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="firstDate" name="from_date" value="" class="form-control datepicker">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label>To date</label>
-                      <input type="text" required id="secondDate" name="" value="" class="form-control datepicker">
+                      <input type="text" required id="secondDate" name="to_date" value="" class="form-control datepicker">
                     </div>
                   </div>
                 </div>
@@ -66,7 +67,7 @@
                   <div class="col-5"></div>
                   <div class="col-3">
                     <div class="form-group">
-                      <button type="submit" name="button" class="btn btn-lg btn-primary">APPLY</button>
+                      <button type="submit" class="btn btn-lg btn-primary">APPLY</button>
                     </div>
                   </div>
                 </div>
