@@ -20,8 +20,8 @@ class Dcpstepone extends Model
     	return $this->hasMany('App\DcpStepTwo');
     }
 
-		public function orderprocess()
-		{
-			return $this->hasMany('App\OrderProcess');
-		}
+    public function orderprocess()
+    {
+        return $this->hasMany('App\OrderProcess', 'srcno', 'id');
+    }
 }

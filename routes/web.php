@@ -331,3 +331,83 @@ Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
 
 Route::any ( '/search', 'ProfileController@searchprofile')->name('search.profile');
 Route::get('superadmin','SuperAdminController@index')->name('superadmin');
+
+
+/*
+    ==================================================
+    PCP routes
+    ==================================================
+*/
+
+Route::group(['prefix'=>'pcp','middleware'=>'auth'],function(){
+
+    Route::get('/dashboard','LabDipController@dashboard')->name('labdip.dashboard');
+
+    Route::get('/labdip/create','LabDipController@create')->name('labdip.create');
+    Route::get('/labdip/index','LabDipController@index')->name('labdip.index');
+    Route::post('/labdip/store','LabDipController@store')->name('labdip.store');
+    Route::get('labdip/colors/{id}/edit', 'LabDipController@edit')->name('labdip.edit');
+    Route::post('/labdip/{id}/editsave', 'LabDipController@editsave')->name('labdip.editsave');
+
+    Route::get('/labdip/approve', 'LabDipController@approve')->name('labdip.approve');
+    Route::get('/labdip/reject', 'LabDipController@reject')->name('labdip.reject');
+    Route::get('/labdip/rejectlog', 'LabDipController@rejectlog')->name('labdip.rejectlog');
+
+    Route::get('/labdip/exfactory/', 'LabDipController@exfactory')->name('labdip.exfactory');
+    Route::get('/labdip/colors/', 'LabDipController@colors')->name('labdip.colors');
+    Route::get('/Labdip/color/', 'LabDipController@color_info')->name('labdip.color');
+    Route::get('/labdip/exf', 'LabDipController@exf')->name('labdip.exf');
+
+
+
+    Route::get('/seal01/create','SealOneController@create')->name('seal01.create');
+    Route::post('/seal01/save', 'SealOneController@store')->name('seal01.store');
+    Route::get('/seal01/exfactory/', 'SealOneController@exfactory')->name('seal01.exfactory');
+    Route::get('/seal01/', 'SealOneController@index')->name('seal01.index');
+    Route::get('/seal01/edit', 'SealOneController@edit')->name('seal101.edit');
+    Route::post('/seal101/edit', 'SealOneController@editsave')->name('seal101.editsave');
+
+    Route::get('/seal01/approve', 'SealOneController@approve')->name('seal01.approve');
+    Route::get('/seal01/reject', 'SealOneController@reject')->name('seal01.reject');
+    Route::get('/seal01/rejectlog', 'SealOneController@rejectlog')->name('seal01.rejectlog');
+
+
+    Route::get('/seal02/create','SealTwoController@create')->name('seal02.create');
+    Route::get('/seal02/', 'SealTwoController@index')->name('seal02.index');
+    Route::post('/seal02/save', 'SealTwoController@store')->name('seal02.store');
+    Route::get('/seal02/edit', 'SealTwoController@edit')->name('seal02.edit');
+    Route::post('/seal102/edit', 'SealTwoController@editsave')->name('seal02.editsave');
+
+    Route::get('/seal02/approve', 'SealTwoController@approve')->name('seal02.approve');
+    Route::get('/seal02/reject', 'SealTwoController@reject')->name('seal02.reject');
+    Route::get('/seal02/rejectlog', 'SealTwoController@rejectlog')->name('seal02.rejectlog');
+
+    //Route::get('/seal04/create','LabDipController@tcreate')->name('seal04.create');
+    Route::get('/feedin/create','FeedInTargetController@create')->name('feedin.create');
+    Route::post('/feedin/store', 'FeedInTargetController@store')->name('feedin.store');
+    Route::get('/feedin', 'FeedInTargetController@index')->name('feedin.index');
+    Route::get('feedin/edit', 'FeedInTarget@edit')->name('feedin.edit');
+
+
+    Route::get('/seal03/create','SealThreeController@create')->name('seal03.create');
+    Route::get('/seal03/', 'SealThreeController@index')->name('seal03.index');
+    Route::post('/seal03/save', 'SealThreeController@store')->name('seal03.store');
+    Route::get('/seal03/edit', 'SealThreeController@edit')->name('seal03.edit');
+    Route::post('/seal103/edit', 'SealThreeController@editsave')->name('seal03.editsave');
+
+    Route::get('/seal03/approve', 'SealThreeController@approve')->name('seal03.approve');
+    Route::get('/seal03/reject', 'SealThreeController@reject')->name('seal03.reject');
+    Route::get('/seal03/rejectlog', 'SealThreeController@rejectlog')->name('seal03.rejectlog');
+
+
+    Route::get('/seal04/create','SealFourController@create')->name('seal04.create');
+    Route::get('/seal04/', 'SealFourController@index')->name('seal04.index');
+    Route::post('/seal04/save', 'SealFourController@store')->name('seal04.store');
+    Route::get('/seal04/edit', 'SealFourController@edit')->name('seal04.edit');
+    Route::post('/seal104/edit', 'SealFourController@editsave')->name('seal04.editsave');
+
+    Route::get('/seal04/approve', 'SealFourController@approve')->name('seal04.approve');
+    Route::get('/seal04/reject', 'SealFourController@reject')->name('seal04.reject');
+    Route::get('/seal04/rejectlog', 'SealFourController@rejectlog')->name('seal04.rejectlog');
+
+});

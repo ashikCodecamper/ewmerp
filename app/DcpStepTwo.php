@@ -10,6 +10,6 @@ class DcpStepTwo extends Model
 
     public function dcpstepone()
     {
-      return $this->belongsTo('App\Dcpstepone');
+      return $this->belongsTo('App\Dcpstepone', 'source_id', 'id');
     }
 }
