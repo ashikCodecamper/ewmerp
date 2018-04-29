@@ -20,14 +20,7 @@
               <form class="" action="<?php echo e(route('savetakealeave')); ?>" method="post" data-parsley-validate>
                 <?php echo e(csrf_field()); ?>
 
-                <div class="row">
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label>Available Leave balance</label>
-                      <input type="text" readonly name="" value="12" class="form-control">
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="row">
                   <div class="col-4">
                     <div class="form-group">
