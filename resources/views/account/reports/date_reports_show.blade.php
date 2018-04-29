@@ -24,8 +24,8 @@
 <table>
   <tr>
     <td><strong>Date</strong></td>
-    <td><strong>Account Head</strong></td> 
-    <td><strong>Account SubHead</strong></td> 
+    <td><strong>Account Head</strong></td>
+    <td><strong>Account SubHead</strong></td>
     <td><strong>Particular Head</strong></td>
     <td><strong>Voucher No</strong></td>
     <td><strong>Details Description</strong></td>
@@ -36,7 +36,7 @@
   		<td class="cell">{{$row['recording_date']}}</td>
   		<td class="cell">{{$row->head->name}}</td>
       @if($row->subhead)
-        <td class="cell">{{$row->subhead->description}}</td>
+        <td class="cell">{{$row->subhead->name}}</td>
         @else
         <td></td>
       @endif
@@ -106,7 +106,7 @@
                     <td>unknown</td>
                     @endif
                     @if($party->subhead)
-                        <td>{{$party->subhead->description}}</td>
+                        <td>{{$party->subhead->name}}</td>
                     @else
                         <td>unknown</td>
                     @endif
@@ -117,7 +117,7 @@
                     @endif
                     @if($party->details_description	)
                     <td>{{$party->details_description}}</td>
-                    @else 
+                    @else
                     <td>no description</td>
                     @endif
                     <td>{{number_format($party->expense_amount)}}</td>

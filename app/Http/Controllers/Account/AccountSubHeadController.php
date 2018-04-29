@@ -20,6 +20,7 @@ class AccountSubHeadController extends Controller
     {
         AccountSubHead::create([
             'head_id' => $request->head,
+            'name' => $request->name,
             'description' => $request->description,
         ]);
 
@@ -31,12 +32,13 @@ class AccountSubHeadController extends Controller
     {
         $url = request()->url();
         $id = explode("/", $url)[5];
-        
+
         $party = AccountSubHead::find($id);
 
         $party['head_id'] = $request->heads;
+        $party['name'] = $request->name;
         $party['description'] = $request->description;
-       
+
         $party->save();
 
         return redirect(route('accountsubhead.index'));
@@ -58,9 +60,6 @@ class AccountSubHeadController extends Controller
         $id = $request->id;
 
         $balance = AccountSubHead::find($id);
-        $data = array();
-        $data['balance'] = $balance;
-        $data['head_name'] = $balance->head->name;
-        return $data;
+        return $balance;
     }
 }

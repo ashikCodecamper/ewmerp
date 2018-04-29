@@ -130,7 +130,7 @@
                          $("#ch").show();
                     }
                     else {
-                        $("#ch").hide();    
+                        $("#ch").hide();
                     }
             });
 
@@ -140,8 +140,8 @@
                         success: function (msg) {
                            var month = moment().format('MMM').substr(0,3);
                            var year = moment().year().toString().substr(2,)
-                           console.log(month)
-                           $('#icon_prefixvoucher').val(month+year+'-'+msg.substr(1,));
+                           console.log(msg)
+                           $('#icon_prefixvoucher').val(month+year+'-'+msg);
                         },
                         complete: function (msg) {
                             Materialize.updateTextFields();
@@ -162,10 +162,10 @@
                         },
                         success: function (msg) {
                             $('#subhead option').slice(1).remove()
-                            var b = msg.substr(1,);
+                            var b = msg;
                             a = JSON.parse(b);
                             $.each(a, function (i, item) {
-                                var o = new Option(item.description, item.id);
+                                var o = new Option(item.name, item.id);
                                 $('#subhead').append(o);
                                 console.log($('#subhead'));
                             });
@@ -176,8 +176,8 @@
                     });
             });
 
-            
-         
+
+
         });
 
         $('.datepicker').pickadate({
@@ -187,7 +187,7 @@
             clear: 'Clear',
             close: 'Ok',
             closeOnSelect: true,
-            format: 'yyyy-mm-dd' 
+            format: 'yyyy-mm-dd'
         });
 
         $('.datepicker1').pickadate({
@@ -197,7 +197,7 @@
             clear: 'Clear',
             close: 'Ok',
             closeOnSelect: true,
-            format: 'yyyy-mm-dd' 
+            format: 'yyyy-mm-dd'
         });
     </script>
 @endsection

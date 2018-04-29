@@ -1,15 +1,17 @@
-@extends('layouts.apps')
-@section('stylesheet')<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+<?php $__env->startSection('stylesheet'); ?><link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-@endsection
-@section('module-name','Account')
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('module-name','Account'); ?>
 
+
+<?php $__env->startSection('content'); ?>
     <div class="row">
-        <form data-parsley-validate class="col l12" method="post" action="{{route('payable.save')}}">
-            {{csrf_field()}}
+        <form data-parsley-validate class="col l12" method="post" action="<?php echo e(route('expense.save')); ?>">
+            <?php echo e(csrf_field()); ?>
+
             <div class="row">
                 <div class="input-field col s4 ">
                     <i class="material-icons prefix icon-blue">date_range</i>
@@ -28,8 +30,8 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">description</i>
-                    <input name="voucher_no" id="icon_prefixvoucher" type="text" class="validate" required>
-                    <label for="icon_prefix">Voucher No</label>
+                    <input  name="voucher_no" id="icon_prefixvoucher" type="text" class="validate" required>
+                    <label  for="icon_prefix">Voucher No</label>
                 </div>
 
                 <div class="input-field col s6">
@@ -40,13 +42,13 @@
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+               <div class="input-field col s6">
                     <i class="material-icons prefix">description</i>
                     <select  id="head" name="head">
                       <option value="" disabled selected>Choose Account Head</option>
-                      @foreach($heads as $h)
-                        <option value="{{ $h->id }}">{{ $h->name }}</option>
-                      @endforeach
+                      <?php $__currentLoopData = $heads; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $h): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($h->id); ?>"><?php echo e($h->name); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <label>Account Head</label>
                 </div>
@@ -57,7 +59,6 @@
                     </select>
                     <label>Account SubHead</label>
                 </div>
-
             </div>
 
             <div class="row">
@@ -66,6 +67,25 @@
                     <input name="details_description" id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Details Description</label>
                 </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">attach_money</i>
+                    <select id="s" name="payment_type" required>
+                      <option value="" disabled selected>Choose Payment type</option>
+                      <option value="cheque">Cheque</option>
+                      <option value="cash">Cash</option>
+                    </select>
+                    <label>Payment type</label>
+                </div>
+            </div>
+
+            <div class="row" >
+                <div id="ch" class="input-field col s6">
+                    <i class="material-icons prefix">email</i>
+                    <input name="cheque_no" id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Cheque No</label>
+                </div>
+
                 <div class="input-field col s6">
                    <i class="material-icons prefix">attach_money</i>
                     <input data-parsley-type="number" name="amount" id="icon_prefix" type="text" class="validate" required>
@@ -73,18 +93,17 @@
                 </div>
             </div>
             <div class="row">
-                  <div class="input-field col s6">
+                <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <select name="party">
                       <option value="" disabled selected>Choose Party</option>
-                      @foreach($parties as $p)
-                        <option value="{{ $p->id }}">{{ $p->party_name }}</option>
-                      @endforeach
+                      <?php $__currentLoopData = $parties; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($p->id); ?>"><?php echo e($p->party_name); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <label>Party</label>
                 </div>
             </div>
-
             <div class="row">
                 <div class="input-field col s6">
                     <button class="btn btn-small btn-register waves-effect waves-light" type="submit">save
@@ -96,15 +115,15 @@
         </form>
     </div>
 
-@endsection
+
+<?php $__env->stopSection(); ?>
 
 
-@section('javascript')
+<?php $__env->startSection('javascript'); ?>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-
             $("#ch").hide();
             $('select').material_select();
             $("#s").on('change', function() {
@@ -116,12 +135,13 @@
                     }
             });
 
-             $.ajax({
+               $.ajax({
                         type: "get",
-                        url: "{{route('expense-month')}}",
+                        url: "<?php echo e(route('expense-month')); ?>",
                         success: function (msg) {
-                           var month = moment().format('MMMM').substr(0, 3);
+                           var month = moment().format('MMM').substr(0,3);
                            var year = moment().year().toString().substr(2,)
+                           console.log(msg)
                            $('#icon_prefixvoucher').val(month+year+'-'+msg);
                         },
                         complete: function (msg) {
@@ -129,15 +149,16 @@
                         }
             });
 
+
             //fetching the subhead after on head is selected
             $("#head").on('change', function() {
                    var id = $(this).val();
                     $.ajax({
                         type: "get",
-                        url: "{{route('head_subhead')}}",
+                        url: "<?php echo e(route('head_subhead')); ?>",
                         dataType:'text',
                         data: {
-                            "_token": "{{ csrf_token() }}",
+                            "_token": "<?php echo e(csrf_token()); ?>",
                             id: id
                         },
                         success: function (msg) {
@@ -155,6 +176,8 @@
                         }
                     });
             });
+
+
 
         });
 
@@ -178,4 +201,6 @@
             format: 'yyyy-mm-dd'
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

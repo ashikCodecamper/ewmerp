@@ -17,8 +17,8 @@
       <table class="highlight bordered z-depth-3 striped">
     <tr>
       <td><strong>Date</strong></td>
-      <td><strong>Account Head</strong></td> 
-      <td><strong>Account SubHead</strong></td> 
+      <td><strong>Account Head</strong></td>
+      <td><strong>Account SubHead</strong></td>
       <td><strong>Particular Head</strong></td>
       <td><strong>Voucher No</strong></td>
       <td><strong>Details Description</strong></td>
@@ -26,8 +26,8 @@
     </tr>
     <tr>
       <td><strong>AccountHead</strong></td>
-      <td><strong></strong></td> 
-      <td><strong></strong></td> 
+      <td><strong></strong></td>
+      <td><strong></strong></td>
       <td><strong></strong></td>
       <td><strong></strong></td>
       <td><strong></strong></td>
@@ -41,7 +41,7 @@
         <tr>
           <td>{{$row->recording_date}}</td>
           <td></td>
-          <td>{{$row->subhead->description}}</td>
+          <td>{{$row->subhead->name}}</td>
           <td>{{$row->particulars}}</td>
           <td>{{$row->voucher_no}}</td>
           <td>{{$row->details_description}}</td>
@@ -86,8 +86,3 @@
 
     </script>
 @endsection
-
-    
-
-
-

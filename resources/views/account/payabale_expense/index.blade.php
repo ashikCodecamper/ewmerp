@@ -82,7 +82,7 @@
                     <td>unknown</td>
                     @endif
                     @if($party->subhead)
-                        <td>{{$party->subhead->description}}</td>
+                        <td>{{$party->subhead->name}}</td>
                     @else
                         <td>unknown</td>
                     @endif
@@ -93,7 +93,7 @@
                     @endif
                     @if($party->details_description	)
                     <td>{{$party->details_description}}</td>
-                    @else 
+                    @else
                     <td>no description</td>
                     @endif
                     <td>{{number_format($party->expense_amount)}}</td>
@@ -111,7 +111,7 @@
 
 
 
-    
+
 
 @endsection
 
@@ -140,14 +140,14 @@
                          $("#ch").show();
                     }
                     else {
-                        $("#ch").hide();    
+                        $("#ch").hide();
                     }
             });
 
              $('.pay').click(function(){
 
                     var id = this.id;
-                    
+
                     var url = 'pay/'+id;
 
                     $("#editForms").attr('action', url);
@@ -166,7 +166,7 @@
                       startingTop: '4%', // Starting top style attribute
                       endingTop: '10%', // Ending top style attribute
                       ready: function(modal, trigger) {
-                           
+
                       },
                       //complete: function() { alert('Closed'); } // Callback for Modal close
                 });

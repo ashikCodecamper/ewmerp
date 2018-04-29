@@ -25,8 +25,8 @@
 <table>
   <tr>
     <td><strong>Date</strong></td>
-    <td><strong>Account Head</strong></td> 
-    <td><strong>Account SubHead</strong></td> 
+    <td><strong>Account Head</strong></td>
+    <td><strong>Account SubHead</strong></td>
     <td><strong>Particular Head</strong></td>
     <td><strong>Voucher No</strong></td>
     <td><strong>Details Description</strong></td>
@@ -37,7 +37,7 @@
   	<tr>
   		<td>{{ $loop->iteration }}</td>
   		<td class="cell">{{$row[0]->head->name}}</td>
-	    <td><strong>subheads</strong></td> 
+	    <td><strong>subheads</strong></td>
 	    <td><strong></strong></td>
 	    <td><strong></strong></td>
 	    <td><strong></strong></td>
@@ -49,7 +49,7 @@
   		<td class="cell">{{$r['recording_date']}}</td>
   		<td class="cell"></td>
       @if($r->subhead)
-        <td class="cell">{{$r->subhead->description}}</td>
+        <td class="cell">{{$r->subhead->name}}</td>
         @else
         <td></td>
       @endif
@@ -62,8 +62,8 @@
   @endforeach
   <tr>
 	    <td><strong></strong></td>
-	    <td><strong></strong></td> 
-	    <td><strong></strong></td> 
+	    <td><strong></strong></td>
+	    <td><strong></strong></td>
 	    <td><strong></strong></td>
 	    <td><strong></strong></td>
 	    <td><strong>Total cost</strong></td>
@@ -93,8 +93,8 @@
         <table class="highlight bordered z-depth-3 striped">
 			<tr>
 			    <td><strong>Date</strong></td>
-			    <td><strong>Account Head</strong></td> 
-			    <td><strong>Account SubHead</strong></td> 
+			    <td><strong>Account Head</strong></td>
+			    <td><strong>Account SubHead</strong></td>
 			    <td><strong>Particular Head</strong></td>
 			    <td><strong>Voucher No</strong></td>
 			    <td><strong>Details Description</strong></td>
@@ -109,7 +109,7 @@
 					  @else
 					  <td>unknown</td>
 					  @endif
-				    <td><strong>subheads</strong></td> 
+				    <td><strong>subheads</strong></td>
 				    <td><strong></strong></td>
 				    <td><strong></strong></td>
 				    <td><strong></strong></td>
@@ -121,7 +121,7 @@
 			  		<td class="cell">{{$r['recording_date']}}</td>
 			  		<td class="cell"></td>
 			     	@if($r->subhead)
-			        	<td class="cell">{{$r->subhead->description}}</td>
+			        	<td class="cell">{{$r->subhead->name}}</td>
 			        @else
 			        	<td></td>
 			      	@endif
@@ -134,8 +134,8 @@
 			  @endforeach
 			  <tr>
 				    <td><strong></strong></td>
-				    <td><strong></strong></td> 
-				    <td><strong></strong></td> 
+				    <td><strong></strong></td>
+				    <td><strong></strong></td>
 				    <td><strong></strong></td>
 				    <td><strong></strong></td>
 				    <td><strong>Total cost</strong></td>

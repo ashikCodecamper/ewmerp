@@ -25,10 +25,10 @@
 
 <table>
   <tr>
-    <td class="b" style="width: 127px;"> <strong>Head Name</strong></td> 
+    <td class="b" style="width: 127px;"> <strong>Head Name</strong></td>
     <td class="b" style="background-color: #000000;"> <strong>total</strong></td>
   </tr>
-  
+
   @foreach($data as $row)
   	<tr>
   		<td class="cell">{{$row[0]->head->name}}</td>
@@ -83,7 +83,7 @@
                     <td>{{$party->party->party_name}}</td>
                     <td>{{$party->head->name}}</td>
                     @if($party->subhead)
-                        <td>{{$party->subhead->description}}</td>
+                        <td>{{$party->subhead->name}}</td>
                     @endif
                     <td>{{$party->particulars}}</td>
                     <td>{{$party->details_description}}</td>
