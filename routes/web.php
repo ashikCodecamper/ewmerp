@@ -330,3 +330,4 @@ Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
 });
 
 Route::any ( '/search', 'ProfileController@searchprofile')->name('search.profile');
+Route::get('superadmin','SuperAdminController@index')->name('superadmin');
