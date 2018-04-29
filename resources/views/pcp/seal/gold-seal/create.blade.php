@@ -32,7 +32,7 @@
             <div class="col-md-2">
               <div class="form-group">
               <label>Proto no.</label>
-              <select id="proto_id" class="form-control" name="proto">
+              <select required id="proto_id" class="form-control" name="proto">
                 <option value="">-Select Proto-</option>
                 @foreach($protos as $proto)
                   <option value="{{$proto->dcpstepone->id}}">{{$proto->dcpstepone->proto}}</option>
@@ -68,7 +68,7 @@
         <div class="col-md-2">
           <div class="form-group">
              <label>Seal Type</label>
-             <select class="form-control" name="sealtype">
+             <select required class="form-control" name="sealtype">
                <option value="">-Select Type-</option>
                <option value="Gold Seal">Gold Seal</option>
                <option value="PP sample">PP Sample</option>
@@ -80,7 +80,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Test Result Submission</label>
-            <select name="plandate" class="form-control">
+            <select required name="plandate" class="form-control">
               <option>Approved</option>
               <option>Rejected</option>
             </select>
@@ -90,7 +90,7 @@
         <div class="col-md-2">
           <div class="form-group">
             <label>Actual Date of Submission</label>
-          <input type="text" name="actsum" id="actsubdate" class="form-control actsubdate" placeholder="YYYY-MM-DD">
+          <input required type="text" name="actsum" id="actsubdate" class="form-control actsubdate" placeholder="YYYY-MM-DD">
           </div>
 
         </div>
@@ -99,14 +99,14 @@
        <div class="col-md-2" id="uardate">
           <div class="form-group">
              <label>AWB details</label>
-        <textarea name="awb" rows="2" class="form-control"></textarea>
+        <textarea required name="awb" rows="2" class="form-control"></textarea>
           </div>
         </div>
 
          <div class="col-md-2" id="uardate">
           <div class="form-group">
              <label>Comment</label>
-             <select name="comment" class="form-control">
+             <select  required name="comment" class="form-control">
                <option value="Approved">Approved</option>
                <option value="Rejected">Rejected</option>
              </select>
@@ -116,14 +116,14 @@
         <div class="col-md-2">
           <div class="form-group">
              <label>Comment Date</label>
-    <input type="text" name="cmntdate" id="cmntsdate" class="form-control cmntsdate" placeholder="YYYY-MM-DD">
+    <input required type="text" name="cmntdate" id="cmntsdate" class="form-control cmntsdate" placeholder="YYYY-MM-DD">
           </div>
         </div>
 
         <div class="col-md-2">
             <div class="form-group">
               <label>Remarks</label>
-              <textarea rows="1" cols="25" name="rev_comment" placeholder="Revised Comment"></textarea>
+              <textarea required rows="1" cols="25" name="rev_comment" placeholder="Revised Comment"></textarea>
             </div>
         </div>
 

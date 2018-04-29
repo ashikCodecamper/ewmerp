@@ -94,7 +94,7 @@ class BalanceController extends Controller
         $party['amount'] = $request->amount;
         $party['description'] = $request->description;
         $party['date'] = $request->date;
-       
+
         $party->save();
 
         return redirect(route('balance.index'));
@@ -132,9 +132,9 @@ class BalanceController extends Controller
     public function balanceexpense()
     {
 
-        $balance = DB::table('Balances')->select('date', 'amount as amount_received')->get();
+        $balance = DB::table('balances')->select('date', 'amount as amount_received')->get();
 
-        $expense = DB::table('Expenses')->select('recording_date as date', 'expense_amount as amount_paid')->get();
+        $expense = DB::table('expenses')->select('recording_date as date', 'expense_amount as amount_paid')->get();
 
         //$expense_balance = collect($expense,$balance);
         $all = $balance->merge($expense);
@@ -157,7 +157,7 @@ class BalanceController extends Controller
         // return $final;
         $cbalance = 0;
         return view('account.balance.balanceexpense', compact('final', 'cbalance'));
-        
+
     }
 
     public function balanceexpenseShow()
@@ -171,9 +171,9 @@ class BalanceController extends Controller
         $start = $request->start;
         $end = $request->end;
 
-        $balanceO = DB::table('Balances')->select('date', 'amount as amount_received')->where('date', '<', $start)->get();
+        $balanceO = DB::table('balances')->select('date', 'amount as amount_received')->where('date', '<', $start)->get();
 
-        $expenseO = DB::table('Expenses')->select('recording_date as date', 'expense_amount as amount_paid')->where('recording_date', '<', $start)->get();
+        $expenseO = DB::table('expenses')->select('recording_date as date', 'expense_amount as amount_paid')->where('recording_date', '<', $start)->get();
 
         $allO = $balanceO->merge($expenseO);
 
@@ -182,9 +182,9 @@ class BalanceController extends Controller
 
 
         //date wise report data
-        $balance = DB::table('Balances')->select('date', 'amount as amount_received', 'description')->where('date', '>=', $start)->where('date', '<=', $end)->get();
+        $balance = DB::table('balances')->select('date', 'amount as amount_received', 'description')->where('date', '>=', $start)->where('date', '<=', $end)->get();
 
-        $expense = DB::table('Expenses')->select('recording_date as date', 'expense_amount as amount_paid','details_description as description')->where('recording_date', '>=', $start)->where('recording_date', '<=', $end)->get();
+        $expense = DB::table('expenses')->select('recording_date as date', 'expense_amount as amount_paid','details_description as description')->where('recording_date', '>=', $start)->where('recording_date', '<=', $end)->get();
 
         $all = $balance->merge($expense);
         $all = $all->sortBy('date');
@@ -204,6 +204,6 @@ class BalanceController extends Controller
 
         $final = $all->all();
         return view('account.balance.balanceexpense2',['openning'=>$openning,'finals'=>$final]);
-        
+
     }
 }

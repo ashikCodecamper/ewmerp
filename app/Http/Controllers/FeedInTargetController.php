@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\FeedInTarget;
+use App\DcpStepTwo;
 use Illuminate\Http\Request;
 use DB;
 
@@ -9,7 +10,7 @@ class FeedInTargetController extends Controller
 {
     public function index()
     {
-      $sealones = \App\FeedInTarget::all();
+      $sealones = FeedInTarget::all();
       return view('pcp.feedin.index', compact('sealones'));
     }
 
@@ -23,7 +24,7 @@ class FeedInTargetController extends Controller
       $all = $all->intersect($stre);
 
       //return $all;
-      $data = \App\Dcpsteptwo::where('status', 1);
+      $data = DcpStepTwo::where('status', 1);
 
       $f = DB::table('feed_in_targets')->pluck('proto_id');
 
@@ -38,7 +39,7 @@ class FeedInTargetController extends Controller
     public function store(Request $request)
     {
       //return $request->all();
-      $f = new \App\FeedInTarget;
+      $f = new FeedInTarget;
       $f->proto_id = $request->proto;
       $f->act_feed_date = $request->plandate;
       $f->feed_in_target = $request->targetdate;

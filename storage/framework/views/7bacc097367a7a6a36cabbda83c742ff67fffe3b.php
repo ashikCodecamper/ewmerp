@@ -1,6 +1,4 @@
-@extends('layouts.apps')
-
-@section('stylesheet')
+<?php $__env->startSection('stylesheet'); ?>
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
@@ -15,9 +13,9 @@
       }
     </style>
     </style>
-@endsection
-@section('module-name','PCP :: Lab-Dip')
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('module-name','PCP :: Lab-Dip'); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row">
         <div class="col-12">
           <div class="box">
@@ -26,7 +24,7 @@
 
               <div class="box-tools" style="float:right;">
 
-                  <a href="{{route('labdip.create')}}"><button type="buton" class="btn bg-purple btn-lg" ><strong>Add New Lab-Dip<strong></button></a>
+                  <a href="<?php echo e(route('labdip.create')); ?>"><button type="buton" class="btn bg-purple btn-lg" ><strong>Add New Lab-Dip<strong></button></a>
               </div>
             </div>
             <!-- /.box-header -->
@@ -47,60 +45,61 @@
                   <th>Remark</th>
                   <th class="text-center" width="130">Action</th>
                 </tr>
-                @if(!empty($labdips))
-              @foreach($labdips as $labdip)
+                <?php if(!empty($labdips)): ?>
+              <?php $__currentLoopData = $labdips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $labdip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                 <tr>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample">{{$loop->index+1}}</td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample">{{$labdip->dcp->proto}}</td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
-                  <td width="130s" data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"><?php echo e($loop->index+1); ?></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"><?php echo e($labdip->dcp->proto); ?></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
+                  <td width="130s" data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></td>
                   <td></td>
                   <td class="text-center">
-                    <i class="fas fa-angle-double-down fa-2x text-primary text-center" data-toggle="collapse" data-target=".{{$labdip->proto_id}}" aria-expanded="false" aria-controls="collapseExample"></i>
+                    <i class="fas fa-angle-double-down fa-2x text-primary text-center" data-toggle="collapse" data-target=".<?php echo e($labdip->proto_id); ?>" aria-expanded="false" aria-controls="collapseExample"></i>
                   </td>
-                  @foreach($labdip->colors as $c)
-                  <tr class="collapse {{$labdip->proto_id}}">
+                  <?php $__currentLoopData = $labdip->colors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr class="collapse <?php echo e($labdip->proto_id); ?>">
                     <td></td>
                     <td></td>
-                    <td>{{$c->main_color}}</td>
-                    <td>{{$c->sub_colors}}</td>
-                    <td>{{$c->submission_date}}</td>
-                    <td>{{$c->parcel_no}}</td>
-                    <td>{{$c->uk_arrive_date}}</td>
-                    <td>{{$c->uk_recieve_date}}</td>
-                    <td>{{$c->poms_date}}</td>
-                    <td>{{$c->first_submission_cmnt}}</td>
-                    <td>{{$c->comment_date}}</td>
-                    <td>{{$c->revised_comment}}
+                    <td><?php echo e($c->main_color); ?></td>
+                    <td><?php echo e($c->sub_colors); ?></td>
+                    <td><?php echo e($c->submission_date); ?></td>
+                    <td><?php echo e($c->parcel_no); ?></td>
+                    <td><?php echo e($c->uk_arrive_date); ?></td>
+                    <td><?php echo e($c->uk_recieve_date); ?></td>
+                    <td><?php echo e($c->poms_date); ?></td>
+                    <td><?php echo e($c->first_submission_cmnt); ?></td>
+                    <td><?php echo e($c->comment_date); ?></td>
+                    <td><?php echo e($c->revised_comment); ?>
 
-                    @if($c->status == 0)
+
+                    <?php if($c->status == 0): ?>
                     <td  width="160">
-                      <a href="{{route('labdip.edit', ['id' => $c->id])}}"><i class="fas fa-edit fa-2x"></i></a>
-                      <a href="{{route('labdip.approve', ['id'=>$c->id])}}"><i class="fas fa-check fa-2x text-success"></i></a>
-                      <a href="{{route('labdip.reject', ['id'=>$c->id])}}"><i class="fas fa-times fa-2x text-danger"></i></a>
+                      <a href="<?php echo e(route('labdip.edit', ['id' => $c->id])); ?>"><i class="fas fa-edit fa-2x"></i></a>
+                      <a href="<?php echo e(route('labdip.approve', ['id'=>$c->id])); ?>"><i class="fas fa-check fa-2x text-success"></i></a>
+                      <a href="<?php echo e(route('labdip.reject', ['id'=>$c->id])); ?>"><i class="fas fa-times fa-2x text-danger"></i></a>
 
-                      <a href="#" id="{{$c->id}}" class="mshit"><i class="fas fa-align-center fa-2x"></i></a>
+                      <a href="#" id="<?php echo e($c->id); ?>" class="mshit"><i class="fas fa-align-center fa-2x"></i></a>
 
                     </td>
-                    @else
+                    <?php else: ?>
                     <td class="text-center">
-                      <a href="{{route('labdip.approve', ['id'=>$c->id])}}"><button class="btn btn-sm btn-warning">Not Approve</button></a>
+                      <a href="<?php echo e(route('labdip.approve', ['id'=>$c->id])); ?>"><button class="btn btn-sm btn-warning">Not Approve</button></a>
                     </td>
-                    @endif
+                    <?php endif; ?>
                   </tr>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tr>
 				        </tr>
-            @endforeach
-            @endif
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
               </table>
             </div>
             <!-- /.box-body -->
@@ -125,11 +124,11 @@
       </div>
 
       </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-@section('javascript')
+<?php $__env->startSection('javascript'); ?>
  <!--  <script>
         document.getElementById('form2').addEventListener('submit', function(e) {
             var form = this;
@@ -197,4 +196,6 @@
       })
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

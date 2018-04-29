@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dcpsteptwo;
+use App\DcpStepTwo;
 use App\Dcpstepone;
 use App\SealTwo;
 use Carbon\Carbon;
@@ -35,7 +35,7 @@ class SealThreeController extends Controller
         $all = $lab_dips_id->intersect($stwo); //making the common
 
         //return $all;
-        $data = Dcpsteptwo::where('status', 1);
+        $data = DcpStepTwo::where('status', 1);
 
 
         $sthree = DB::table('seal_threes')->pluck('proto_id');
@@ -78,7 +78,7 @@ class SealThreeController extends Controller
 
      $all = $lab_dips_id->intersect($stwo);
 
-     $data = Dcpsteptwo::where('status', 1);
+     $data = DcpStepTwo::where('status', 1);
 
      $protos = $data->whereIn('source_id', $all)->get();
 

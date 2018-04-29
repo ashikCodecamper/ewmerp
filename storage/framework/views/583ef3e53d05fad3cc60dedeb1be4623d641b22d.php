@@ -1,6 +1,5 @@
-@extends('layouts.apps')
-@section('module-name','Production Critical Path')
-@section('stylesheet')
+<?php $__env->startSection('module-name','Production Critical Path'); ?>
+<?php $__env->startSection('stylesheet'); ?>
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
 
@@ -8,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.css" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="row">
  <div>
    <h3></h3>
@@ -21,57 +20,40 @@
           <h3 class="box-title">Feed In Date Target</h3>
 
           <div class="box-tools" style="float:right;">
-              <a href="#"><button type="buton" class="btn bg-purple btn-lg" ><strong>List<strong></button></a>
+              <a href="<?php echo e(route('feedin.create')); ?>"><button type="buton" class="btn bg-purple btn-lg" ><strong>create<strong></button></a>
           </div>
           <hr>
         </div>
+        <div class="box-body no-padding">
+          <table class="table">
+            <tr>
+              <th>#</th>
+              <th>Proto</th>
+              <th>Target Date</th>
+              <th>Actual submission date</td>
+              <th class="text-right">Action</th>
+            </tr>
 
-      <form method="post" action="{{route('feedin.store')}}" data-parsley-validate id="feedform">
-        {{csrf_field()}}
-        <div class="row">
-        <div class="col-md-2">
-          <div class="form-group">
-          <label>Proto no.</label>
-          <select required id="actsubdate" name="proto" class="form-control">
-            <option value="">--Select Proto--</option>
-            @foreach($protos as $p)
-              <option value="{{$p->dcpstepone->id}}">{{$p->dcpstepone->proto}}</option>
-            @endforeach
-          </select>
+            <?php $__currentLoopData = $sealones; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sealone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tr>
+              <td><?php echo e($loop->index += 1); ?></td>
+              <td><?php echo e($sealone->dcpone->proto); ?></td>
+              <td><?php echo e($sealone->feed_in_target); ?></td>
+              <td><?php echo e($sealone->act_feed_date); ?></td>
+              <td class="text-right">
+                  <a href="<?php echo e(route('feedin.edit', ['id'=>$sealone->id])); ?>"><span class="btn label-warning">edit</span></a>
+              </td>
+            </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </table>
         </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-              <label>Feed In Target date</label>
-          <input required id="target" type="text" name="targetdate" class="form-control" id="targetdate" readonly="">
-          </div>
 
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label>Feed In Actual Date</label>
-            <input required id="actu" type="text" name="plandate" class="form-control" required="" data-parsley-error-message="Enter Date" placeholder="YYYY-MM-DD" id="plandate">
-          </div>
-        </div>
-    </div>
-    </div>
-
-    <hr>
-   <div class="row"><hr></div>
-
-   <div class="row">
-      <div class="col-md-5"></div>
-<div class="col-md-2"><input type="submit" name="submit" class="btn btn-info btn-block" value="SAVE"></div>
-        <div class="col-md-4"></div>
-   </div>
-
-   </form>
 
  </div>
 </div>
 </div>
-@endsection
-@section('javascript')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript'); ?>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -126,7 +108,7 @@
         console.log($("#actsubdate"));
         $("#actsubdate").change(function() {
             $.ajax({
-              url: "{{route('seal01.exfactory')}}",
+              url: "<?php echo e(route('seal01.exfactory')); ?>",
               data: {
                 id: $("#actsubdate").val()
 
@@ -176,4 +158,6 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

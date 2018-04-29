@@ -30,7 +30,7 @@ class LabDipController extends Controller
         // ->get();
 
         $labdips = LabDip::all();
-
+        //return $labdips;
 
         return view('pcp.lab-dip.index',compact('labdips'));
 

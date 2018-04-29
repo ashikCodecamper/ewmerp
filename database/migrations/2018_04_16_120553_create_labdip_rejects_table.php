@@ -24,6 +24,7 @@ class CreateLabdipRejectsTable extends Migration
             $table->date('uk_recieve_date');
             $table->string('first_submission_cmnt')->nullable();
             $table->string('revised_comment')->nullable();
+            $table->date('comment_date');
             $table->date('poms_date');
             $table->timestamps();
         });

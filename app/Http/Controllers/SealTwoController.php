@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dcpsteptwo;
+use App\DcpStepTwo;
 use App\Dcpstepone;
 use App\SealTwo;
 use Carbon\Carbon;
@@ -21,8 +21,8 @@ class SealTwoController extends Controller
     {
         $lab_dips_id = DB::table('seal_twos')->pluck('proto_id');
 
-        $data = Dcpsteptwo::where('status', 1);
-
+        $data = DcpStepTwo::where('status', 1);
+        
         $protos = $data->whereNotIn('source_id', $lab_dips_id)->get();
 		return view('pcp.seal.black-seal.create', compact('protos'));
     }
@@ -50,7 +50,7 @@ class SealTwoController extends Controller
    {
      $id = $request->id;
      $seal_ones = SealTwo::find($id);
-     $protos = Dcpsteptwo::where('status', 1)->get();
+     $protos = DcpStepTwo::where('status', 1)->get();
 
      return view('pcp.seal.black-seal.edit', compact('seal_ones', 'protos'));
    }

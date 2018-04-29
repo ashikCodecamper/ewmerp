@@ -1,10 +1,10 @@
-@extends('layouts.apps')
-@section('module-name','Confirmed Order List')
-@section('stylesheet')
+
+<?php $__env->startSection('module-name','Confirmed Order List'); ?>
+<?php $__env->startSection('stylesheet'); ?>
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
     <div class="row">
      <div>
        <h3></h3>
@@ -15,12 +15,13 @@
               <h3 class="box-title"></h3>
 
               <div class="box-tools" style="float:right;">
-                  <a href="{{route('orderprocess.index')}}"><button type="buton" class="btn bg-purple btn-lg" ><strong>Confirmed Order List<strong></button></a>
+                  <a href="<?php echo e(route('orderprocess.index')); ?>"><button type="buton" class="btn bg-purple btn-lg" ><strong>Confirmed Order List<strong></button></a>
               </div>
               <hr>
             </div>
-            <form method="post" action="{{route('orderprocess.store')}}" data-parsley-validate>
-              {{csrf_field()}}
+            <form method="post" action="<?php echo e(route('orderprocess.store')); ?>" data-parsley-validate>
+              <?php echo e(csrf_field()); ?>
+
               <div class="row">
                 <div class="col-md-3">
                 <div class="form-group">
@@ -34,9 +35,9 @@
                   <label>Proto No.</label>
                <select class="form-control" name="srcno" required data-parsley-error-message="Select Source No.">
                  <option value="">-Select Proto-</option>
-                 @foreach ($srcno as $src)
-                 <option value="{{$src->source_id}}">{{$src->proto}}</option>
-                 @endforeach
+                 <?php $__currentLoopData = $srcno; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $src): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                 <option value="<?php echo e($src->source_id); ?>"><?php echo e($src->proto); ?></option>
+                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                </select>
                  <span class="text-danger"></span>
                </div>
@@ -120,8 +121,8 @@
        </form>
      </div>
     </div>
-@endsection
-@section('javascript')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('javascript'); ?>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -199,4 +200,6 @@
   });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.apps', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

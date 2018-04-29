@@ -23,7 +23,7 @@ class SealFourController extends Controller
     $all = $all->intersect($stre);
 
     //return $all;
-    $data = \App\Dcpsteptwo::where('status', 1);
+    $data = \App\DcpStepTwo::where('status', 1);
 
     $f = DB::table('seal_fours')->pluck('proto_id');
 
@@ -66,7 +66,7 @@ class SealFourController extends Controller
    $all = $all->intersect($stre);
 
    //return $all;
-   $data = \App\Dcpsteptwo::where('status', 1);
+   $data = \App\DcpStepTwo::where('status', 1);
 
    $protos = $data->whereIn('source_id', $all)->get();
 

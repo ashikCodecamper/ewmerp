@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dcpsteptwo;
+use App\DcpStepTwo;
 use App\Dcpstepone;
 use Carbon\Carbon;
 use App\SealOne;
@@ -22,9 +22,11 @@ class SealOneController extends Controller
    {
       $lab_dips_id = DB::table('sealones')->pluck('proto_id');
 
-      $data = Dcpsteptwo::where('status', 1);
 
+      $data = DcpStepTwo::where('status', 1);
+      //return $data;
       $protos = $data->whereNotIn('source_id', $lab_dips_id)->get();
+      //return $protos;
 
       return view('pcp.seal.red-seal.create', compact('protos'));
 
@@ -52,7 +54,7 @@ class SealOneController extends Controller
    public function exfactory(Request $request)
    {
       $id = $request->id;
-      $dcp = \App\Dcpstepone::find($id)->orderprocess->first();
+      $dcp = Dcpstepone::find($id)->orderprocess->first();
 
       $response  = array();
       $response['exfactory'] = $dcp->ex_factory_date;
@@ -64,7 +66,7 @@ class SealOneController extends Controller
    {
      $id = $request->id;
      $seal_ones = SealOne::find($id);
-     $protos = Dcpsteptwo::where('status', 1)->get();
+     $protos = DcpStepTwo::where('status', 1)->get();
 
      return view('pcp.seal.red-seal.edit', compact('seal_ones', 'protos'));
    }
