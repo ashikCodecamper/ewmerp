@@ -411,3 +411,27 @@ Route::group(['prefix'=>'pcp','middleware'=>'auth'],function(){
     Route::get('/seal04/rejectlog', 'SealFourController@rejectlog')->name('seal04.rejectlog');
 
 });
+
+
+/**========================= Shipping Routes ================================**/
+  
+Route::group(['prefix'=>'shipment'],function(){
+    //Route::get('/','shipping\ShipmentProcessController@dashboard')->name('shipment.dashboard');
+    Route::get('/index','shipping\ShipmentProcessController@index')->name('shipment.index');
+    Route::get('/vessel/approval','shipping\ShipmentProcessController@vessel_approval')->name('vessel.approval');
+    Route::post('/ship','shipping\ShipmentProcessController@ex_fact')->name('shipment.exfact');
+    Route::post('/exfactory','shipping\ShipmentProcessController@store_exfactory')->name('shipment.exfact.store');
+    Route::post('/vesselinfo','shipping\ShipmentProcessController@store_vesselinfo')->name('shipment.vesselinfo.store');
+    Route::post('/revised_list','shipping\ShipmentProcessController@revised_exfactory')->name('shipment.revised_exfactory');
+    Route::get('/vessel/list','shipping\ShipmentProcessController@vessel_list')->name('vessel.list');
+    Route::post('/get/shipment','shipping\ShipmentProcessController@get_shipmentinfo')->name('shipment.info');
+    Route::post('/update/oktoship','shipping\ShipmentProcessController@ok_ship')->name('shipment.oktoship');
+
+});
+
+Route::group(['prefix'=>'shipment-module'],function(){
+  Route::get('/','shipping\ShipmentModuleController@dashboard')->name('shipment.dashboard');
+  Route::get('/index','shipping\ShipmentModuleController@index')->name('shipmodule.index');
+  Route::post('/info/store','shipping\ShipmentModuleController@shipment_info')->name('shipmodule.store');
+  Route::post('/com/store','shipping\ShipmentModuleController@complete_ship')->name('shipmodule.complete');
+});

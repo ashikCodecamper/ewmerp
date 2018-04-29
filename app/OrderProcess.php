@@ -8,6 +8,6 @@ class OrderProcess extends Model
 {
   public function dcpstepone()
   {
-    return $this->belongsTo('App\Dcpstepone', 'srcno', 'id');
+    return $this->belongsTo('App\Dcpstepone','srcno');
   }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.apps')
-@section('module-name','Order-Process')
+@section('module-name','Confirmed Order List')
 @section('content')
 <div class="row">
         <div class="col-12">
@@ -16,9 +16,9 @@
               <table class="table">
                 <tr>
                   <th>#</th>
-                  <th>Src no.</th>
                   <th>Proto</th>
-                  <th>BD/PO Sheet Receive Date</th>
+                  <th>PO Number</th>
+                  <th>BD/PO Sheet Received Date</th>
                   <th>Color</th>
                   <th>Quantity</th>
                   <th>Ex-Factory Date</th>
@@ -28,8 +28,8 @@
                 @foreach($ordr as $op)
                 <tr>
                   <td>{{$loop->iteration}}</td>
-                  <td>{{$op->sl_no}}</td>
                   <td>{{$op->proto}}</td>
+                  <td>{{$op->po_number}}</td>
                   <td>{{$op->po_sheet_rcv}}</td>
                   <td>{{$op->color}}</td>
                   <td>{{$op->quantity}}</td>

@@ -1,5 +1,5 @@
 @extends('layouts.apps')
-@section('module-name','Order Receive')
+@section('module-name','Confirmed Order List')
 @section('stylesheet')
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
@@ -15,7 +15,7 @@
               <h3 class="box-title"></h3>
 
               <div class="box-tools" style="float:right;">
-                  <a href="{{route('orderprocess.index')}}"><button type="buton" class="btn bg-purple btn-lg" ><strong>Order Receive List<strong></button></a>
+                  <a href="{{route('orderprocess.index')}}"><button type="buton" class="btn bg-purple btn-lg" ><strong>Confirmed Order List<strong></button></a>
               </div>
               <hr>
             </div>
@@ -24,7 +24,7 @@
               <div class="row">
                 <div class="col-md-3">
                 <div class="form-group">
-                   <label>BD/PO Sheet Receiving Date</label>
+                   <label>BD/PO Sheet Received Date</label>
                 <input type="text" name="porcvdate" value="" class="form-control" id="porcv">
                   <span class="text-danger"></span>
                 </div>
@@ -43,41 +43,65 @@
               </div>
 
                <div class="col-md-2">
-
+                 <div class="form-group">
+                   <label>PO Number</label>
+                <input type="text" name="ponumber" value="" class="form-control" >
+                  <span class="text-danger"></span>
+                </div>
                </div>
-               <div class="col-md-5">
+               <div class="col-md-2"></div>
+               <div class="col-md-3">
                  <a href="#" class="btn btn-success add">ADD</a>&nbsp;
                  <a href="#" class="btn btn-warning remove">Remove</a>
                </div>
               </div>
+              <hr>
 <!--Bulk KnitDown Dynamic Part -->
           <div id="bul_container">
              <div id="bulk">
              <div class="row">
-                 <div class="col-md-3">
+                 <div class="col-md-2">
                    <div class="form-group">
-                     <label>Color</label>
+                     <label>Main-Color</label>
                      <input type="text" name="color[]" class="form-control" required data-parsley-error-message="Enter Color Name or Code">
                    </div>
 
                  </div>
-                 <div class="col-md-3">
+                 <div class="col-md-2">
                    <div class="form-group">
-                     <label>Quantity</label>
+                     <label>Order Quantity</label>
                      <input type="text" name="qty[]" class="form-control" required data-parsley-error-message="Enter Quantity">
                    </div>
                  </div>
 
-                 <div class="col-md-3">
+                 <div class="col-md-2">
+                   <div class="form-group">
+                     <label for="">ETD</label>
+                     <input type="text" name="etd[]" value="" class="form-control etd">
+                   </div>
+                 </div>
+
+                 <div class="col-md-2">
                    <div class="form-group">
                       <label>Ex-Factory Date</label>
                      <input type="text" class="form-control exfact" name="exfactdate[]" placeholder="" required data-parsley-error-message="Select Date">
                    </div>
                  </div>
-                 <div class="col-md-3">
+                 <div class="col-md-2">
                    <div class="form-group">
                      <label for="">Warehouse Date</label>
                      <input type="text" name="warehouse[]" value="" class="form-control warehouse" readonly>
+                   </div>
+                 </div>
+
+                  <div class="col-md-2">
+                   <div class="form-group">
+                     <label for="">Ship Mode</label>
+                    <select name="shipmode[]" class="form-control">
+                      <option value="">--Select Mode--</option>
+                      <option value="air">Air</option>
+                       <option value="ship">Ship</option>
+                    </select>
                    </div>
                  </div>
                 </div>
@@ -150,6 +174,14 @@
 
     //Date for Ex-Factory.
     $('#bulk').on('focusin',".exfact",function(){
+      $(this).daterangepicker({locale: {
+        format: 'YYYY-MM-DD',
+      }, singleDatePicker: true, "showDropdowns": true, }, function(start, end, label) {
+      console.log(start.toISOString(), end.toISOString(), label);
+    });
+    });
+
+     $('#bulk').on('focusin',".etd",function(){
       $(this).daterangepicker({locale: {
         format: 'YYYY-MM-DD',
       }, singleDatePicker: true, "showDropdowns": true, }, function(start, end, label) {

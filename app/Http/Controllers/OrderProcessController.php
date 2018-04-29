@@ -45,11 +45,14 @@ class OrderProcessController extends Controller
             while($i < $nofinsert){
          $insertdata[] = array(
              'srcno'      => $request->srcno,
+             'po_number'  =>$request->ponumber,
              'po_sheet_rcv'=>$request->porcvdate,
              'color'      => $request->color[$i],
              'quantity'     => $request->qty[$i],
+             'ETD'          =>$request->etd[$i],
              'ex_factory_date'     => $request->exfactdate[$i],
              'warehouse_date'     => $request->warehouse[$i],
+             'ship_mode'          =>$request->shipmode[$i],
 
 
          );
