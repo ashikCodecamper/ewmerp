@@ -10,6 +10,6 @@ class FeedInTarget extends Model
 
     public function dcpone()
     {
-      return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
+        return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
     }
 }

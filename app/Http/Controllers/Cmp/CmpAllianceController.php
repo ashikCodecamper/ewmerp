@@ -3,16 +3,14 @@
  * Created by PhpStorm.
  * User: rsuit
  * Date: 1/28/2018
- * Time: 4:42 PM
+ * Time: 4:42 PM.
  */
 
 namespace App\Http\Controllers\Cmp;
 
-
 use App\CmpAccordAlliance;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 
 class CmpAllianceController extends Controller
 {
@@ -20,7 +18,7 @@ class CmpAllianceController extends Controller
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
@@ -31,7 +29,7 @@ class CmpAllianceController extends Controller
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
@@ -42,10 +40,10 @@ class CmpAllianceController extends Controller
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
-        $a = new CmpAccordAlliance;
+        $a = new CmpAccordAlliance();
 
         $a['supplier_id'] = $s->id;
         $a['bsPercentage'] = $request->building_safety;
@@ -61,24 +59,21 @@ class CmpAllianceController extends Controller
     }
 
     public function edit()
-
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         return view('cmp.alliance.edit', compact('s'));
     }
 
     public function edits(Request $request)
-
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
-
 
         $s->alliance['bsPercentage'] = $request->building_safety;
         $s->alliance['bsPercentageE'] = $request->building_safetye;
@@ -90,7 +85,5 @@ class CmpAllianceController extends Controller
         $s->alliance->save();
 
         return redirect(route('cmpHome'));
-
     }
-
 }

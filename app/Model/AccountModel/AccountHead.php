@@ -12,6 +12,6 @@ class AccountHead extends Model
 
     public function subheads()
     {
-    	return $this->hasMany('App\Model\AccountModel\AccountSubHead', 'head_id', 'id');
+        return $this->hasMany('App\Model\AccountModel\AccountSubHead', 'head_id', 'id');
     }
 }

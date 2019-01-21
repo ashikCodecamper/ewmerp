@@ -2,36 +2,37 @@
 
 namespace App\Http\Controllers\Account;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\AccountModel\AccountSubHead;
 use App\Model\AccountModel\AccountHead;
+use App\Model\AccountModel\AccountSubHead;
+use Illuminate\Http\Request;
+
 class AccountSubHeadController extends Controller
 {
     public function index()
     {
-    	$aheads = AccountHead::all();
+        $aheads = AccountHead::all();
 
-    	$heads = AccountSubHead::all();
-    	return view('account.subaccounthead.index', compact('heads', 'aheads'));
+        $heads = AccountSubHead::all();
+
+        return view('account.subaccounthead.index', compact('heads', 'aheads'));
     }
 
     public function store(Request $request)
     {
         AccountSubHead::create([
-            'head_id' => $request->head,
-            'name' => $request->name,
+            'head_id'     => $request->head,
+            'name'        => $request->name,
             'description' => $request->description,
         ]);
 
         return redirect(route('accountsubhead.index'));
-
     }
 
     public function update(Request $request)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = AccountSubHead::find($id);
 
@@ -44,10 +45,10 @@ class AccountSubHeadController extends Controller
         return redirect(route('accountsubhead.index'));
     }
 
-	public function destroy($id)
+    public function destroy($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = AccountSubHead::find($id);
         $party->delete();
@@ -60,6 +61,7 @@ class AccountSubHeadController extends Controller
         $id = $request->id;
 
         $balance = AccountSubHead::find($id);
+
         return $balance;
     }
 }

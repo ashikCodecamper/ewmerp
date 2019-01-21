@@ -8,7 +8,7 @@ class CmpAccordAlliance extends Model
 {
     protected $table = 'cmp_accord_alliances';
     protected $gaurded = [
-        'id'
+        'id',
     ];
 
     public function supplier()

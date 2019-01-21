@@ -8,7 +8,7 @@ class CmpAudit extends Model
 {
     protected $table = 'cmp_audits';
     protected $gaurded = [
-        'id'
+        'id',
     ];
 
     public function smeta()

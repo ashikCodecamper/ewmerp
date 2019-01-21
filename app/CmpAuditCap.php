@@ -8,17 +8,11 @@ class CmpAuditCap extends Model
 {
     protected $table = 'cmp_audit_caps';
     protected $gaurded = [
-        'id'
+        'id',
     ];
-
 
     public function audit()
     {
         return $this->belongsTo('App\CmpAudit', 'audit_id', 'id');
     }
-    
-
-    
-    
-
 }

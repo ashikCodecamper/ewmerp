@@ -8,7 +8,7 @@ class LabdipColor extends Model
 {
     public function labdip()
     {
-    	return $this->belongsTo('App\LabDip');
+        return $this->belongsTo('App\LabDip');
     }
 
     // public function step()
@@ -18,12 +18,11 @@ class LabdipColor extends Model
 
     public function order_process()
     {
-    	return $this->belongsTo('App\OrderProcess', 'order_process_id', 'id');
+        return $this->belongsTo('App\OrderProcess', 'order_process_id', 'id');
     }
 
     public function rejects()
     {
         return $this->hasMany('App\LabdipReject', 'labdip_color_id', 'id');
     }
-
 }

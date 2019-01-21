@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Cmp;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CmpAuditController extends Controller
 {
@@ -14,7 +14,6 @@ class CmpAuditController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -25,9 +24,8 @@ class CmpAuditController extends Controller
     public function create()
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
-       
-    
+        $id = explode('/', $url)[5];
+
         $s = \App\CmpSupplier::find($id);
 
         return view('cmp.audit.create', compact('s'));
@@ -36,14 +34,15 @@ class CmpAuditController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $url = request()->url();
-        
-        $id = explode("/", $url)[5];
+
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         $a = new \App\CmpAudit();
@@ -61,7 +60,8 @@ class CmpAuditController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -72,25 +72,25 @@ class CmpAuditController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         return view('cmp.audit.edit', compact('s'));
-
     }
 
     public function edits(Request $request)
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         $s->smeta->audit['smeta_id'] = $s->smeta->id;
@@ -103,7 +103,6 @@ class CmpAuditController extends Controller
         return redirect(route('cmpHome'));
     }
 
-
     public function update(Request $request, $id)
     {
         //
@@ -112,7 +111,8 @@ class CmpAuditController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

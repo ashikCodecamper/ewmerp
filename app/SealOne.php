@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SealOne extends Model
 {
-    protected $table = "sealones";
+    protected $table = 'sealones';
     protected $gaurded = ['id'];
 
     // this editor is really beautiful
@@ -15,12 +15,11 @@ class SealOne extends Model
 
     public function dcpone()
     {
-    	return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
+        return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
     }
 
     public function rejects()
     {
-      return $this->hasMany('App\SealoneReject','sealone_id', 'id');
+        return $this->hasMany('App\SealoneReject', 'sealone_id', 'id');
     }
-
 }

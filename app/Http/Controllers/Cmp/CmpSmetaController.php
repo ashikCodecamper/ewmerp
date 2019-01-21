@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Cmp;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 
 class CmpSmetaController extends Controller
 {
@@ -26,20 +25,17 @@ class CmpSmetaController extends Controller
     public function create()
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
-        
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
         return view('cmp.smeta.create', compact('s'));
     }
 
-
     public function store(Request $request)
     {
-        
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $su = \App\CmpSupplier::find($id);
 
         $s = new \App\CmpSmeta();
@@ -49,22 +45,19 @@ class CmpSmetaController extends Controller
         $s['smetaExpiryDate'] = $request->smeta_expiry;
         $s->save();
 
-        return redirect(route('auditCreate',$id));
+        return redirect(route('auditCreate', $id));
     }
-
 
     public function show($id)
     {
         //
     }
 
-
     public function edit($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
-
 
         return view('cmp.smeta.edit', compact('s'));
     }
@@ -72,7 +65,7 @@ class CmpSmetaController extends Controller
     public function edits(Request $request)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         $s->smeta['smetaZsNumber'] = $request->smeta_zs;
@@ -91,7 +84,8 @@ class CmpSmetaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

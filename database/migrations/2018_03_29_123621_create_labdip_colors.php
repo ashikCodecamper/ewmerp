@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLabdipColors extends Migration
 {
@@ -13,7 +13,7 @@ class CreateLabdipColors extends Migration
      */
     public function up()
     {
-         Schema::create('labdip_colors', function (Blueprint $table) {
+        Schema::create('labdip_colors', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('labdip_id')->unsigned();
             $table->integer('order_process_id')->unsigned();
@@ -29,7 +29,6 @@ class CreateLabdipColors extends Migration
             $table->date('poms_date');
             $table->boolean('status')->default(false);
             $table->timestamps();
-
         });
     }
 

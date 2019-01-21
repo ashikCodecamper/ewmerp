@@ -8,6 +8,6 @@ class Leaveapplication extends Model
 {
     public function employee()
     {
-      return $this->belongsTo('App\Leaveapplication');
+        return $this->belongsTo('App\Leaveapplication');
     }
 }

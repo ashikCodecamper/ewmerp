@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Account;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\AccountModel\Bank;
+use Illuminate\Http\Request;
 
 class BankController extends Controller
 {
@@ -16,6 +16,7 @@ class BankController extends Controller
     public function index()
     {
         $banks = Bank::all();
+
         return view('account.bank.index', compact('banks'));
     }
 
@@ -26,50 +27,50 @@ class BankController extends Controller
      */
     public function create()
     {
-
         return view('account.bank.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         Bank::create([
-            'bank_name' => $request->bank_name,
+            'bank_name'   => $request->bank_name,
             'branch_name' => $request->branch_name,
-            'account_no' => $request->account_no,
-            'address' => $request->address
+            'account_no'  => $request->account_no,
+            'address'     => $request->address,
         ]);
 
         return redirect(route('bank.index'));
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $bank = Bank::find($id);
 
@@ -79,14 +80,15 @@ class BankController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = Bank::find($id);
 
@@ -100,17 +102,17 @@ class BankController extends Controller
         return redirect(route('bank.index'));
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = Bank::find($id);
         $party->delete();

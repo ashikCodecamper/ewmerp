@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Hr;
-use Validator;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
 use App\Hrsection;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
+
 class SectionController extends Controller
 {
-    public function section() {
+    public function section()
+    {
         $secs = Hrsection::all();
-        return view('hr.hrsection',['secs'=>$secs]);
+
+        return view('hr.hrsection', ['secs'=>$secs]);
     }
 
-    public function createsection(Request $request) {
+    public function createsection(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'sec_name' => 'required|unique:hrsections|max:255',
         ]);
@@ -22,9 +27,10 @@ class SectionController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         } else {
-            $secs = new Hrsection;
+            $secs = new Hrsection();
             $secs->sec_name = $request->sec_name;
             $secs->save();
+
             return redirect()->route('hrsection');
         }
     }

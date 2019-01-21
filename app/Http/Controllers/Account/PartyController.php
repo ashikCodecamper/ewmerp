@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Account;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\AccountModel\Party;
+use Illuminate\Http\Request;
 
 class PartyController extends Controller
 {
@@ -16,6 +16,7 @@ class PartyController extends Controller
     public function index()
     {
         $parties = Party::all();
+
         return view('account.party.index', compact('parties'));
     }
 
@@ -26,51 +27,51 @@ class PartyController extends Controller
      */
     public function create()
     {
-
         return view('account.party.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         Party::create([
-            'party_name' => $request->party_name,
+            'party_name'   => $request->party_name,
             'contact_name' => $request->contact_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address
+            'email'        => $request->email,
+            'phone'        => $request->phone,
+            'address'      => $request->address,
         ]);
 
         return redirect(route('party.index'));
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = Party::find($id);
 
@@ -80,14 +81,15 @@ class PartyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = Party::find($id);
 
@@ -102,17 +104,17 @@ class PartyController extends Controller
         return redirect(route('party.index'));
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $party = Party::find($id);
         $party->delete();

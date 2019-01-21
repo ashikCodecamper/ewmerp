@@ -3,21 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\DcpSeason;
-use App\DcpProductCategory;
 
 class Dcpstepone extends Model
 {
-	protected $table="dcpstepones";
+    protected $table = 'dcpstepones';
 
     public function dcpseason()
     {
-    	return $this->belongsTo('App\DcpSeason');
+        return $this->belongsTo('App\DcpSeason');
     }
 
     public function dcpsteptwos()
     {
-    	return $this->hasMany('App\DcpStepTwo');
+        return $this->hasMany('App\DcpStepTwo');
     }
 
     public function orderprocess()

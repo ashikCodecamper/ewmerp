@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Cmp;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CmpAuditCapController extends Controller
 {
@@ -16,7 +16,7 @@ class CmpAuditCapController extends Controller
     {
         $url = request()->url();
 
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         $caps = $s->smeta->audit->caps;
@@ -32,27 +32,25 @@ class CmpAuditCapController extends Controller
     public function create()
     {
         $url = request()->url();
-        
-        $id = explode("/", $url)[5];
+
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         return view('cmp.auditcap.create', compact('s'));
-
-
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        
         $url = request()->url();
-        
-        $id = explode("/", $url)[5];
+
+        $id = explode('/', $url)[5];
         $s = \App\CmpSupplier::find($id);
 
         $c = new \App\CmpAuditCap();
@@ -60,7 +58,7 @@ class CmpAuditCapController extends Controller
         $c['audit_id'] = $s->smeta->audit->id;
         $c['description'] = $request->cap_description;
         $c['timeline'] = $request->cap_timeline;
-        $c['validationByThirdParty'] = ($request->cap_valid == "on" ? 1 : 0);
+        $c['validationByThirdParty'] = ($request->cap_valid == 'on' ? 1 : 0);
         $c['comments'] = $request->smeta_cap;
         $c->save();
 
@@ -70,7 +68,8 @@ class CmpAuditCapController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +80,8 @@ class CmpAuditCapController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -92,8 +92,9 @@ class CmpAuditCapController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -104,7 +105,8 @@ class CmpAuditCapController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

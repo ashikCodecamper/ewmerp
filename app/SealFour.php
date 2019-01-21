@@ -10,11 +10,11 @@ class SealFour extends Model
 
     public function dcpone()
     {
-      return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
+        return $this->belongsTo('App\Dcpstepone', 'proto_id', 'id');
     }
 
     public function rejects()
     {
-      return $this->hasMany('App\SealFourReject','sealfour_id', 'id');
+        return $this->hasMany('App\SealFourReject', 'sealfour_id', 'id');
     }
 }

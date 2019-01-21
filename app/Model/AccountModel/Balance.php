@@ -10,5 +10,5 @@ class Balance extends Model
     protected $guarded = [
         'id',
     ];
-     protected $hidden = ['id', 'created_at', 'updated_at'];
+    protected $hidden = ['id', 'created_at', 'updated_at'];
 }

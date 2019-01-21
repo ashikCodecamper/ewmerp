@@ -10,6 +10,6 @@ class SealtwoReject extends Model
 
     public function sealone()
     {
-      return $this->belongsTo('App\SealTwo', 'id', 'sealtwo_id');
+        return $this->belongsTo('App\SealTwo', 'id', 'sealtwo_id');
     }
 }

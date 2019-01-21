@@ -1,11 +1,10 @@
 <?php
 
 namespace App;
-use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
-use App\Profile;
-use App\HrLeaveType;
 
 class User extends Authenticatable
 {
@@ -29,9 +28,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function profile()
-   {
-       return $this->hasOne('App\Profile');
-   }
 
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
 }

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDcpsteponesTable extends Migration
 {
@@ -22,10 +22,10 @@ class CreateDcpsteponesTable extends Migration
             $table->bigInteger('prdct_cat_id');
             $table->string('feb_construction')->nullable();
             $table->string('cutable_width')->nullable();
-            $table->double('febrice_price',14,3)->nullable();
+            $table->double('febrice_price', 14, 3)->nullable();
             $table->string('febrice_weight')->nullable();
             $table->string('garments_weight')->nullable();
-            $table->double('garments_price',14,3)->nullable();
+            $table->double('garments_price', 14, 3)->nullable();
             $table->string('price_prefix')->nullable();
             $table->string('proto');
             $table->date('proto_rcv_date');

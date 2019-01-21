@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CmpSupplier extends Model
 {
-    
     protected $table = 'cmp_suppliers';
     protected $gaurded = [
-        'id'
+        'id',
     ];
 
     public function smeta()
@@ -26,5 +25,4 @@ class CmpSupplier extends Model
     {
         return $this->hasOne('App\CmpCurrentApproval', 'supplier_id', 'id');
     }
-    
 }

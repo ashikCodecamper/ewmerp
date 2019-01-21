@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Cmp;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CmpCurrentApprovalController extends Controller
 {
     public function create()
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
@@ -19,13 +19,12 @@ class CmpCurrentApprovalController extends Controller
 
     public function store(Request $request)
     {
-
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
-        $a = new \App\CmpCurrentApproval;
+        $a = new \App\CmpCurrentApproval();
 
         $a['supplier_id'] = $id;
         $a['sedex_auditdate'] = $request->sedex_auditdate;
@@ -45,7 +44,7 @@ class CmpCurrentApprovalController extends Controller
     public function edit()
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
 
@@ -55,7 +54,7 @@ class CmpCurrentApprovalController extends Controller
     public function edits(Request $request)
     {
         $url = request()->url();
-        $id = explode("/", $url)[5];
+        $id = explode('/', $url)[5];
 
         $s = \App\CmpSupplier::find($id);
         $s->approval['sedex_auditdate'] = $request->sedex_auditdate;
