@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCmpSuppliersTable extends Migration
 {
@@ -36,8 +36,6 @@ class CreateCmpSuppliersTable extends Migration
             $table->integer('totalWorkForce');
             $table->integer('productionArea');
             $table->text('currentCustomer');
-
-            
 
             $table->timestamps();
         });

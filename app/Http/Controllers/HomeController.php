@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Auth;
-use App\Userprofile;
 use App\user;
+use App\Userprofile;
+use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -25,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $id = Auth::user()->id;
-      $user= User::find($id);
-      $employee = Userprofile::where('user_id', '=', $id)->first();
-    return view('employee.index',['id'=>$id,'user'=>$user,'employee'=>$employee]);
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $employee = Userprofile::where('user_id', '=', $id)->first();
+
+        return view('employee.index', ['id'=>$id, 'user'=>$user, 'employee'=>$employee]);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PayableExpense extends Model
 {
-	protected $guarded = [
+    protected $guarded = [
         'id',
     ];
 
@@ -14,15 +14,15 @@ class PayableExpense extends Model
 
     public function head()
     {
-    	return $this->belongsTo('App\Model\AccountModel\AccountHead', 'head_id', 'id');
+        return $this->belongsTo('App\Model\AccountModel\AccountHead', 'head_id', 'id');
     }
-    
+
     public function party()
     {
-    	return $this->belongsTo('App\Model\AccountModel\Party', 'party_id', 'id');
+        return $this->belongsTo('App\Model\AccountModel\Party', 'party_id', 'id');
     }
-    
-    public function subhead () 
+
+    public function subhead()
     {
         return $this->belongsTo('App\Model\AccountModel\AccountSubHead', 'subhead_id', 'id');
     }

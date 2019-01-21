@@ -15,8 +15,9 @@ class DcpSupplierController extends Controller
      */
     public function index()
     {
-        $sups=DcpSupplier::all();
-        return view('dcp.supplier.index',compact('sups'));
+        $sups = DcpSupplier::all();
+
+        return view('dcp.supplier.index', compact('sups'));
     }
 
     /**
@@ -32,25 +33,27 @@ class DcpSupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'sup_name'=>'required'
+        $this->validate($request, [
+            'sup_name'=> 'required',
         ]);
-        $dsup=new DcpSupplier();
-        $dsup->supplier_name=$request->sup_name;
+        $dsup = new DcpSupplier();
+        $dsup->supplier_name = $request->sup_name;
         $dsup->save();
+
         return redirect(route('supplier.index'));
-      
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\DcpSupplier  $dcpSupplier
+     * @param \App\DcpSupplier $dcpSupplier
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(DcpSupplier $dcpSupplier)
@@ -61,41 +64,47 @@ class DcpSupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\DcpSupplier  $dcpSupplier
+     * @param \App\DcpSupplier $dcpSupplier
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $supplier=DcpSupplier::find($id);
-        return view('dcp.supplier.edit',compact('supplier'));
+        $supplier = DcpSupplier::find($id);
+
+        return view('dcp.supplier.edit', compact('supplier'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DcpSupplier  $dcpSupplier
+     * @param \Illuminate\Http\Request $request
+     * @param \App\DcpSupplier         $dcpSupplier
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-           $supplier = DcpSupplier::find($id);
-            $supplier->supplier_name = $request->sup_name;
-            $supplier->save();
-            Session::flash('success', 'Successfully Updated!');
-            return redirect()->route('supplier.index');
+        $supplier = DcpSupplier::find($id);
+        $supplier->supplier_name = $request->sup_name;
+        $supplier->save();
+        Session::flash('success', 'Successfully Updated!');
+
+        return redirect()->route('supplier.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DcpSupplier  $dcpSupplier
+     * @param \App\DcpSupplier $dcpSupplier
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         DcpSupplier::destroy($id);
-       Session::flash('success', 'Successfully Deleted!');
-      return redirect()->route('supplier.index');
+        Session::flash('success', 'Successfully Deleted!');
+
+        return redirect()->route('supplier.index');
     }
 }

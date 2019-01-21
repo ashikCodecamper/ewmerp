@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUserprofilesTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateUserprofilesTable extends Migration
             $table->string('home_phone_number');
             $table->string('present_addr');
             $table->string('permanent_addr');
-            $table->enum('bllod_group', ['O+', 'O-','A+','A-','B+','B-','AB+','AB-']);
+            $table->enum('bllod_group', ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']);
             $table->string('edu_background');
             $table->string('pre_office_info');
             $table->timestamps();

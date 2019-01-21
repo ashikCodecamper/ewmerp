@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class AddStatusToTakeLeaves extends Migration
 {
@@ -13,8 +12,8 @@ class AddStatusToTakeLeaves extends Migration
      */
     public function up()
     {
-        Schema::table('take_leaves', function($table) {
-          $table->integer('status')->default(0);
+        Schema::table('take_leaves', function ($table) {
+            $table->integer('status')->default(0);
         });
     }
 

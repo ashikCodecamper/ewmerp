@@ -12,7 +12,6 @@ class AccountSubHead extends Model
 
     public function head()
     {
-    	return $this->belongsTo('App\Model\AccountModel\AccountHead', 'head_id', 'id');
+        return $this->belongsTo('App\Model\AccountModel\AccountHead', 'head_id', 'id');
     }
-
 }

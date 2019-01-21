@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDcpseasonsTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateDcpseasonsTable extends Migration
     {
         Schema::create('dcpseasons', function (Blueprint $table) {
             $table->increments('id');
-             $table->string('sea_name');
+            $table->string('sea_name');
             $table->timestamps();
         });
     }

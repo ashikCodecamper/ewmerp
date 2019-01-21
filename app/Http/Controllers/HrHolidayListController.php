@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Session;
+
 use App\HrHolidayList;
 use Illuminate\Http\Request;
+use Session;
 
 class HrHolidayListController extends Controller
 {
-
     //showing the calendar page
 
     public function just_show()
@@ -15,46 +15,42 @@ class HrHolidayListController extends Controller
         return view('hr.holiday.holiday_calendar1');
     }
 
-
     //json events for calendar
 
     public function index()
     {
-
         $events = HrHolidayList::all();
 
-        $events_data = array();
+        $events_data = [];
 
-        foreach ($events as $event)
-        {
-            $events_data[] = array(
-              "id" => $event->id,
-              "title" => $event->title,
-                "start" => $event->start,
-                "end" => $event->end,
-                "className" => $event->className,
-            );
+        foreach ($events as $event) {
+            $events_data[] = [
+              'id'          => $event->id,
+              'title'       => $event->title,
+                'start'     => $event->start,
+                'end'       => $event->end,
+                'className' => $event->className,
+            ];
         }
-        return json_encode(array("events" => $events_data));
-    }
 
+        return json_encode(['events' => $events_data]);
+    }
 
     //saving the holiday event in database
 
     public function saveholiday(Request $request)
     {
-       $data = $request->get('data');
-       $b = json_decode($data, true);
+        $data = $request->get('data');
+        $b = json_decode($data, true);
 
-       $hr = new HrHolidayList;
+        $hr = new HrHolidayList();
 
-       $hr['title'] = $b['title'];
-       $hr['start'] = $b['start'];
-       $hr['end'] = $b['end'];
-       $hr['className'] = $b['className'];
+        $hr['title'] = $b['title'];
+        $hr['start'] = $b['start'];
+        $hr['end'] = $b['end'];
+        $hr['className'] = $b['className'];
 
-       $hr->save();
-
+        $hr->save();
     }
 
     //edit the holiday event in database
@@ -69,8 +65,6 @@ class HrHolidayListController extends Controller
         $e['title'] = $b['title'];
 
         $e->save();
-
-
     }
 
     //delete the holiday
@@ -83,7 +77,6 @@ class HrHolidayListController extends Controller
         $e = HrHolidayList::find($b['id']);
         $e->delete();
     }
-
 
     /*
     public function create()

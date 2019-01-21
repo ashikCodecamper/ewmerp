@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use Session;
 use App\DcpSeason;
 use Illuminate\Http\Request;
+use Session;
 
 class DcpSeasonController extends Controller
 {
@@ -16,7 +15,7 @@ class DcpSeasonController extends Controller
      */
     public function index()
     {
-         return view('dcp.season.index',['seas'=>DcpSeason::orderBy('sea_name', 'asc')->get()]);
+        return view('dcp.season.index', ['seas'=>DcpSeason::orderBy('sea_name', 'asc')->get()]);
     }
 
     /**
@@ -26,28 +25,31 @@ class DcpSeasonController extends Controller
      */
     public function create()
     {
-         return view('dcp.season.create');
+        return view('dcp.season.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         DcpSeason::create([
-          'sea_name' => $request->sea_name
+          'sea_name' => $request->sea_name,
         ]);
         Session::flash('success', 'Successfully Created!');
+
         return redirect()->route('season.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\DcpSeason  $dcpSeason
+     * @param \App\DcpSeason $dcpSeason
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(DcpSeason $dcpSeason)
@@ -58,41 +60,47 @@ class DcpSeasonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\DcpSeason  $dcpSeason
+     * @param \App\DcpSeason $dcpSeason
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-         $season = DcpSeason::find($id);
-        return view('dcp.season.edit',['season'=>$season]);
+        $season = DcpSeason::find($id);
+
+        return view('dcp.season.edit', ['season'=>$season]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DcpSeason  $dcpSeason
+     * @param \Illuminate\Http\Request $request
+     * @param \App\DcpSeason           $dcpSeason
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-            $season = DcpSeason::find($id);
-            $season->sea_name = $request->sea_name;
-            $season->save();
-            Session::flash('success', 'Successfully Updated!');
-            return redirect()->route('season.index');
+        $season = DcpSeason::find($id);
+        $season->sea_name = $request->sea_name;
+        $season->save();
+        Session::flash('success', 'Successfully Updated!');
+
+        return redirect()->route('season.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DcpSeason  $dcpSeason
+     * @param \App\DcpSeason $dcpSeason
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         DcpSeason::destroy($id);
-       Session::flash('success', 'Successfully Deleted!');
-      return redirect()->route('season.index');
+        Session::flash('success', 'Successfully Deleted!');
+
+        return redirect()->route('season.index');
     }
 }

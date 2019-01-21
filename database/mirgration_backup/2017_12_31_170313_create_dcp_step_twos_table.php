@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateDcpStepTwosTable extends Migration
 {
@@ -17,8 +17,8 @@ class CreateDcpStepTwosTable extends Migration
             $table->increments('id');
             $table->string('source_id');
             $table->string('supplier_id');
-            $table->double('fob_price',15,3);
-            $table->double('target_price',15,3);
+            $table->double('fob_price', 15, 3);
+            $table->double('target_price', 15, 3);
             $table->string('sup_name');
             $table->integer('courier_no');
             $table->date('submission_date');

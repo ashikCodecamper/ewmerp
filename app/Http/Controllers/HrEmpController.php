@@ -1,21 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use Session;
+
 use App\EmploymentType;
 use Illuminate\Http\Request;
+use Session;
 
 class HrEmpController extends Controller
 {
-       /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       
-        return view('hr.emptype.index',['emptypes'=>EmploymentType::orderBy('emp_name', 'asc')->get()]);
+        return view('hr.emptype.index', ['emptypes'=>EmploymentType::orderBy('emp_name', 'asc')->get()]);
     }
 
     /**
@@ -31,22 +31,25 @@ class HrEmpController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         EmploymentType::create([
-          'emp_name' => $request->emp_name
+          'emp_name' => $request->emp_name,
         ]);
         Session::flash('success', 'Successfully Created!');
+
         return redirect()->route('emptype.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -57,41 +60,47 @@ class HrEmpController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $emptype = EmploymentType::find($id);
-        return view('hr.emptype.edit',['emptype'=>$emptype]);
+
+        return view('hr.emptype.edit', ['emptype'=>$emptype]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-            $emptype = EmploymentType::find($id);
-            $emptype->emp_name = $request->emp_name;
-            $emptype->save();
-            Session::flash('success', 'Successfully Updated!');
-            return redirect()->route('emptype.index');
+        $emptype = EmploymentType::find($id);
+        $emptype->emp_name = $request->emp_name;
+        $emptype->save();
+        Session::flash('success', 'Successfully Updated!');
+
+        return redirect()->route('emptype.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-      EmploymentType::destroy($id);
-      Session::flash('success', 'Successfully Deleted!');
-      return redirect()->route('emptype.index');
+        EmploymentType::destroy($id);
+        Session::flash('success', 'Successfully Deleted!');
+
+        return redirect()->route('emptype.index');
     }
 }
